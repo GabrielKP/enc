@@ -1,0 +1,2657 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Kristijan">
+      
+      
+        <link rel="canonical" href="https://gabrielkp.com/enc/main/">
+      
+      
+        <link rel="prev" href="../run_all/">
+      
+      
+        <link rel="next" href="../regression/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>main - The Encoders</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#encoders.main.do_regression" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="The Encoders" class="md-header__button md-logo" aria-label="The Encoders" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The Encoders
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              main
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/GabrielKP/enc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="https://kristijanarmeni.github.io/encoders_report" target="_blank" class="md-tabs__link">
+          
+  
+  Report
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../run_all/" class="md-tabs__link">
+          
+  
+  Documentation
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="The Encoders" class="md-nav__button md-logo" aria-label="The Encoders" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    The Encoders
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/GabrielKP/enc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Report
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Report
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://kristijanarmeni.github.io/encoders_report" target="_blank" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Documentation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../run_all/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    run_all
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    main
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    main
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#encoders.main.do_regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;do_regression
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=" do_regression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(strategy)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(predictor)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;predictor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(stories)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;stories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(n_train_stories)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;n_train_stories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(test_story)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;test_story
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(n_repeats)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;n_repeats
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(subject)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;subject
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(tr_len)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;tr_len
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(n_delays)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;n_delays
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(interpolation)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;interpolation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(ridge_implementation)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;ridge_implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(use_cache)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;use_cache
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(shuffle)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;shuffle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(seed)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;seed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(show_results)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;show_results
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(keep_train_stories_in_mem)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;keep_train_stories_in_mem
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;do_simple_regression
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=" do_simple_regression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(predictor)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;predictor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(stories)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;stories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(n_train_stories)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;n_train_stories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(test_story)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;test_story
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(n_repeats)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;n_repeats
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(subject)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;subject
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(tr_len)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;tr_len
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(n_delays)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;n_delays
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(interpolation)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;interpolation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(ridge_implementation)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;ridge_implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(alphas)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;alphas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(use_cache)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;use_cache
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(shuffle)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;shuffle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(seed)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;seed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(keep_train_stories_in_mem)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;keep_train_stories_in_mem
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    utils
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#encoders.main.do_regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;do_regression
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=" do_regression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(strategy)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(predictor)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;predictor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(stories)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;stories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(n_train_stories)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;n_train_stories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(test_story)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;test_story
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(n_repeats)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;n_repeats
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(subject)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;subject
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(tr_len)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;tr_len
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(n_delays)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;n_delays
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(interpolation)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;interpolation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(ridge_implementation)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;ridge_implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(use_cache)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;use_cache
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(shuffle)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;shuffle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(seed)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;seed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(show_results)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;show_results
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_regression(keep_train_stories_in_mem)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;keep_train_stories_in_mem
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;do_simple_regression
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=" do_simple_regression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(predictor)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;predictor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(stories)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;stories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(n_train_stories)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;n_train_stories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(test_story)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;test_story
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(n_repeats)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;n_repeats
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(subject)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;subject
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(tr_len)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;tr_len
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(n_delays)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;n_delays
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(interpolation)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;interpolation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(ridge_implementation)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;ridge_implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(alphas)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;alphas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(use_cache)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;use_cache
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(shuffle)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;shuffle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(seed)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;seed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.main.do_simple_regression(keep_train_stories_in_mem)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;keep_train_stories_in_mem
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>main</h1>
+
+<div class="doc doc-object doc-module">
+
+
+
+
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="encoders.main.do_regression" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <code class="highlight language-python"><span class="n">do_regression</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;loocv&#39;</span><span class="p">,</span> <span class="n">predictor</span><span class="o">=</span><span class="s1">&#39;embeddings&#39;</span><span class="p">,</span> <span class="n">stories</span><span class="o">=</span><span class="n">STORIES</span><span class="p">,</span> <span class="n">n_train_stories</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">test_story</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="s1">&#39;UTS02&#39;</span><span class="p">,</span> <span class="n">tr_len</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">n_delays</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;lanczos&#39;</span><span class="p">,</span> <span class="n">ridge_implementation</span><span class="o">=</span><span class="s1">&#39;ridge_huth&#39;</span><span class="p">,</span> <span class="n">use_cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">show_results</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">keep_train_stories_in_mem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Runs regression.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_regression(strategy)" class="doc doc-heading doc-heading-parameter">                  <code>strategy</code>
+</h3>            </td>
+            <td>
+                  <code>(loocv, simple)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>loocv</code> uses leave-one-out cross-validation for n_stories. The stories are
+determined by the order of the <code>stories</code> parameter or its default value in
+<code>config.yaml</code>.
+<code>simple</code> computes the regression for a train/test split containing n_stories
+within each repeat.
+Stories are sampled randomly for each repeat.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#34;loocv&#34;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_regression(predictor)" class="doc doc-heading doc-heading-parameter">                  <code>predictor</code>
+</h3>            </td>
+            <td>
+                  <code>(envelope, embeddings, embeddings_huth)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Which predictor to use for the regression. "envelope": audio envelope that
+participants heard. "embeddings": embeddings computed from the words that
+participants heard. "embeddings_huth": embeddings which were used in the
+huth paper (https://www.nature.com/articles/s41597-023-02437-z)</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#34;envelope&#34;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_regression(stories)" class="doc doc-heading doc-heading-parameter">                  <code>stories</code>
+</h3>            </td>
+            <td>
+                  <code>list[str]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Pool of stories, the default is determined by the config.yaml</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="encoders.main.STORIES">STORIES</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_regression(n_train_stories)" class="doc doc-heading doc-heading-parameter">                  <code>n_train_stories</code>
+</h3>            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[int]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The amount of training stories sampled from <code>stories</code>, if this is <code>None</code> will
+use all except one story.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_regression(test_story)" class="doc doc-heading doc-heading-parameter">                  <code>test_story</code>
+</h3>            </td>
+            <td>
+                  <code>str or `None`</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Only used if <code>strategy="simple"</code>. The story on which the regression models will
+be tested.
+If <code>None</code>, the test story will be randomly selected from the pool of stories.</p>
+              </div>
+            </td>
+            <td>
+                  <code>`None`</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_regression(n_repeats)" class="doc doc-heading doc-heading-parameter">                  <code>n_repeats</code>
+</h3>            </td>
+            <td>
+                  <code>int</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Only used if <code>strategy="simple"</code>. Determines how often regression is repeated
+on a different train/test set.</p>
+              </div>
+            </td>
+            <td>
+                  <code>5</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_regression(subject)" class="doc doc-heading doc-heading-parameter">                  <code>subject</code>
+</h3>            </td>
+            <td>
+                  <code>(UTS01, UTS02, UTS03, UTS04, UTS05, UTS06, UTS07, UTS08)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>default="UTS02"
+Subject identifier</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#34;UTS01&#34;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_regression(tr_len)" class="doc doc-heading doc-heading-parameter">                  <code>tr_len</code>
+</h3>            </td>
+            <td>
+                  <code>float</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Length of tr-windows used to sample fMRI data.</p>
+              </div>
+            </td>
+            <td>
+                  <code>2.0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_regression(n_delays)" class="doc doc-heading doc-heading-parameter">                  <code>n_delays</code>
+</h3>            </td>
+            <td>
+                  <code>int</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>How many delays are used to model the HRF, which is modeled by adding
+a shifted set of duplicated features for each delay. <code>n_delays=5</code> implies
+that the the features of the stimulus are shifted concatinated 5 times
+to training/testing data.</p>
+              </div>
+            </td>
+            <td>
+                  <code>4</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_regression(interpolation)" class="doc doc-heading doc-heading-parameter">                  <code>interpolation</code>
+</h3>            </td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to use lanczos interpolation or just average the words within a TR.
+Only applies to the 'embeddings' predictor.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;lanczos&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_regression(ridge_implementation)" class="doc doc-heading doc-heading-parameter">                  <code>ridge_implementation</code>
+</h3>            </td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Which implementation of ridge regression to use. "ridgeCV" uses the RidgeCV
+function from sklearn.
+"ridge_huth" uses the implementation from the Huth lab codebase which applies
+SVD to the data matrix and computes correlation scores with bootstrapping.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;ridge_huth&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_regression(use_cache)" class="doc doc-heading doc-heading-parameter">                  <code>use_cache</code>
+</h3>            </td>
+            <td>
+                  <code>bool</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether the cache is used for <code>envelope</code> features.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_regression(shuffle)" class="doc doc-heading doc-heading-parameter">                  <code>shuffle</code>
+</h3>            </td>
+            <td>
+                  <code>bool</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to shuffle the predictors (features).</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_regression(seed)" class="doc doc-heading doc-heading-parameter">                  <code>seed</code>
+</h3>            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[int]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Seed determining sampling of stories</p>
+              </div>
+            </td>
+            <td>
+                  <code>123</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_regression(show_results)" class="doc doc-heading doc-heading-parameter">                  <code>show_results</code>
+</h3>            </td>
+            <td>
+                  <code>bool</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Create a plot showing the results in pycortex.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_regression(keep_train_stories_in_mem)" class="doc doc-heading doc-heading-parameter">                  <code>keep_train_stories_in_mem</code>
+</h3>            </td>
+            <td>
+                  <code>bool</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether stories are kept in memory after first loading. Unless when using all
+stories turning this off will reduce the memory footprint, but increase the
+time is spent loading data. Only works if <code>strategy='simple'</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>mean_scores</code></td>            <td>
+                  <code><span title="numpy.ndarray">ndarray</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The mean prediction scores for each repeat/split.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+<td><code>scores_list</code></td>            <td>
+                  <code>list of np.ndarray</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The scores for each repeat/split.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+<td><code>weights</code></td>            <td>
+                  <code>list of np.ndarray</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The regression weights for each repeat/split.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+<td><code>alphas</code></td>            <td>
+                  <code>list of float or list of np.ndarray</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The best alphas for each voxel, for each repeat/split.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>src/encoders/main.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span>
+<span class="normal">497</span>
+<span class="normal">498</span>
+<span class="normal">499</span>
+<span class="normal">500</span>
+<span class="normal">501</span>
+<span class="normal">502</span>
+<span class="normal">503</span>
+<span class="normal">504</span>
+<span class="normal">505</span>
+<span class="normal">506</span>
+<span class="normal">507</span>
+<span class="normal">508</span>
+<span class="normal">509</span>
+<span class="normal">510</span>
+<span class="normal">511</span>
+<span class="normal">512</span>
+<span class="normal">513</span>
+<span class="normal">514</span>
+<span class="normal">515</span>
+<span class="normal">516</span>
+<span class="normal">517</span>
+<span class="normal">518</span>
+<span class="normal">519</span>
+<span class="normal">520</span>
+<span class="normal">521</span>
+<span class="normal">522</span>
+<span class="normal">523</span>
+<span class="normal">524</span>
+<span class="normal">525</span>
+<span class="normal">526</span>
+<span class="normal">527</span>
+<span class="normal">528</span>
+<span class="normal">529</span>
+<span class="normal">530</span>
+<span class="normal">531</span>
+<span class="normal">532</span>
+<span class="normal">533</span>
+<span class="normal">534</span>
+<span class="normal">535</span>
+<span class="normal">536</span>
+<span class="normal">537</span>
+<span class="normal">538</span>
+<span class="normal">539</span>
+<span class="normal">540</span>
+<span class="normal">541</span>
+<span class="normal">542</span>
+<span class="normal">543</span>
+<span class="normal">544</span>
+<span class="normal">545</span>
+<span class="normal">546</span>
+<span class="normal">547</span>
+<span class="normal">548</span>
+<span class="normal">549</span>
+<span class="normal">550</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">do_regression</span><span class="p">(</span>
+    <span class="n">strategy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;loocv&quot;</span><span class="p">,</span>
+    <span class="n">predictor</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;embeddings&quot;</span><span class="p">,</span>
+    <span class="n">stories</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">STORIES</span><span class="p">,</span>
+    <span class="n">n_train_stories</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">test_story</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">n_repeats</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">subject</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;UTS02&quot;</span><span class="p">,</span>
+    <span class="n">tr_len</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span>
+    <span class="n">n_delays</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">interpolation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;lanczos&quot;</span><span class="p">,</span>
+    <span class="n">ridge_implementation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;ridge_huth&quot;</span><span class="p">,</span>
+    <span class="n">use_cache</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">shuffle</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">123</span><span class="p">,</span>
+    <span class="n">show_results</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">keep_train_stories_in_mem</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]</span>
+<span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Runs regression.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    strategy : {&quot;loocv&quot;, &quot;simple&quot;}, default=&quot;loocv&quot;</span>
+<span class="sd">        `loocv` uses leave-one-out cross-validation for n_stories. The stories are</span>
+<span class="sd">        determined by the order of the `stories` parameter or its default value in</span>
+<span class="sd">        `config.yaml`.</span>
+<span class="sd">        `simple` computes the regression for a train/test split containing n_stories</span>
+<span class="sd">        within each repeat.</span>
+<span class="sd">        Stories are sampled randomly for each repeat.</span>
+<span class="sd">    predictor : {&quot;envelope&quot;, &quot;embeddings&quot;, &quot;embeddings_huth&quot;}</span>
+<span class="sd">        Which predictor to use for the regression. &quot;envelope&quot;: audio envelope that</span>
+<span class="sd">        participants heard. &quot;embeddings&quot;: embeddings computed from the words that</span>
+<span class="sd">        participants heard. &quot;embeddings_huth&quot;: embeddings which were used in the</span>
+<span class="sd">        huth paper (https://www.nature.com/articles/s41597-023-02437-z)</span>
+<span class="sd">    stories: list[str], default=STORIES</span>
+<span class="sd">        Pool of stories, the default is determined by the config.yaml</span>
+<span class="sd">    n_train_stories: int, optional</span>
+<span class="sd">        The amount of training stories sampled from `stories`, if this is `None` will</span>
+<span class="sd">        use all except one story.</span>
+<span class="sd">    test_story : str or `None`, default=`None`</span>
+<span class="sd">        Only used if `strategy=&quot;simple&quot;`. The story on which the regression models will</span>
+<span class="sd">        be tested.</span>
+<span class="sd">        If `None`, the test story will be randomly selected from the pool of stories.</span>
+<span class="sd">    n_repeats : int, default=5</span>
+<span class="sd">        Only used if `strategy=&quot;simple&quot;`. Determines how often regression is repeated</span>
+<span class="sd">        on a different train/test set.</span>
+<span class="sd">    subject : {&quot;UTS01&quot;, &quot;UTS02&quot;, &quot;UTS03&quot;, &quot;UTS04&quot;, &quot;UTS05&quot;, &quot;UTS06&quot;, &quot;UTS07&quot;, &quot;UTS08&quot;},</span>
+<span class="sd">        default=&quot;UTS02&quot;</span>
+<span class="sd">        Subject identifier</span>
+<span class="sd">    tr_len: float, default=2.0</span>
+<span class="sd">        Length of tr-windows used to sample fMRI data.</span>
+<span class="sd">    n_delays: int, default=4</span>
+<span class="sd">        How many delays are used to model the HRF, which is modeled by adding</span>
+<span class="sd">        a shifted set of duplicated features for each delay. `n_delays=5` implies</span>
+<span class="sd">        that the the features of the stimulus are shifted concatinated 5 times</span>
+<span class="sd">        to training/testing data.</span>
+<span class="sd">    interpolation: {&quot;lanczos&quot;, &quot;average&quot;}, default=&quot;lanczos&quot;</span>
+<span class="sd">        Whether to use lanczos interpolation or just average the words within a TR.</span>
+<span class="sd">        Only applies to the &#39;embeddings&#39; predictor.</span>
+<span class="sd">    ridge_implementation: {&quot;ridgeCV&quot;, &quot;ridge_huth&quot;}, default=&quot;ridge_huth&quot;</span>
+<span class="sd">        Which implementation of ridge regression to use. &quot;ridgeCV&quot; uses the RidgeCV</span>
+<span class="sd">        function from sklearn.</span>
+<span class="sd">        &quot;ridge_huth&quot; uses the implementation from the Huth lab codebase which applies</span>
+<span class="sd">        SVD to the data matrix and computes correlation scores with bootstrapping.</span>
+<span class="sd">    use_cache: bool, default=True</span>
+<span class="sd">        Whether the cache is used for `envelope` features.</span>
+<span class="sd">    shuffle: bool, default=False</span>
+<span class="sd">        Whether to shuffle the predictors (features).</span>
+<span class="sd">    seed: int | None, default=123</span>
+<span class="sd">        Seed determining sampling of stories</span>
+<span class="sd">    show_results: bool, default=True</span>
+<span class="sd">        Create a plot showing the results in pycortex.</span>
+<span class="sd">    keep_train_stories_in_mem: bool, default=True</span>
+<span class="sd">        Whether stories are kept in memory after first loading. Unless when using all</span>
+<span class="sd">        stories turning this off will reduce the memory footprint, but increase the</span>
+<span class="sd">        time is spent loading data. Only works if `strategy=&#39;simple&#39;`.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    mean_scores : np.ndarray</span>
+<span class="sd">        The mean prediction scores for each repeat/split.</span>
+<span class="sd">    scores_list : list of np.ndarray</span>
+<span class="sd">        The scores for each repeat/split.</span>
+<span class="sd">    weights : list of np.ndarray</span>
+<span class="sd">        The regression weights for each repeat/split.</span>
+<span class="sd">    alphas : list of float or list of np.ndarray</span>
+<span class="sd">        The best alphas for each voxel, for each repeat/split.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">n_train_stories</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">n_train_stories</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">stories</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">strategy</span> <span class="o">==</span> <span class="s2">&quot;loocv&quot;</span><span class="p">:</span>
+        <span class="n">mean_scores</span><span class="p">,</span> <span class="n">all_scores</span><span class="p">,</span> <span class="n">all_weights</span><span class="p">,</span> <span class="n">best_alphas</span> <span class="o">=</span> <span class="n">do_loocv_regression</span><span class="p">(</span>
+            <span class="n">predictor</span><span class="o">=</span><span class="n">predictor</span><span class="p">,</span>
+            <span class="n">stories</span><span class="o">=</span><span class="n">stories</span><span class="p">,</span>
+            <span class="n">n_train_stories</span><span class="o">=</span><span class="n">n_train_stories</span><span class="p">,</span>
+            <span class="n">subject</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span>
+            <span class="n">tr_len</span><span class="o">=</span><span class="n">tr_len</span><span class="p">,</span>
+            <span class="n">n_delays</span><span class="o">=</span><span class="n">n_delays</span><span class="p">,</span>
+            <span class="n">interpolation</span><span class="o">=</span><span class="n">interpolation</span><span class="p">,</span>
+            <span class="n">ridge_implementation</span><span class="o">=</span><span class="n">ridge_implementation</span><span class="p">,</span>
+            <span class="n">use_cache</span><span class="o">=</span><span class="n">use_cache</span><span class="p">,</span>
+            <span class="n">shuffle</span><span class="o">=</span><span class="n">shuffle</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">strategy</span> <span class="o">==</span> <span class="s2">&quot;simple&quot;</span><span class="p">:</span>
+        <span class="n">mean_scores</span><span class="p">,</span> <span class="n">all_scores</span><span class="p">,</span> <span class="n">all_weights</span><span class="p">,</span> <span class="n">best_alphas</span> <span class="o">=</span> <span class="n">do_simple_regression</span><span class="p">(</span>
+            <span class="n">predictor</span><span class="o">=</span><span class="n">predictor</span><span class="p">,</span>
+            <span class="n">stories</span><span class="o">=</span><span class="n">stories</span><span class="p">,</span>
+            <span class="n">n_train_stories</span><span class="o">=</span><span class="n">n_train_stories</span><span class="p">,</span>
+            <span class="n">test_story</span><span class="o">=</span><span class="n">test_story</span><span class="p">,</span>
+            <span class="n">subject</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span>
+            <span class="n">tr_len</span><span class="o">=</span><span class="n">tr_len</span><span class="p">,</span>
+            <span class="n">n_delays</span><span class="o">=</span><span class="n">n_delays</span><span class="p">,</span>
+            <span class="n">interpolation</span><span class="o">=</span><span class="n">interpolation</span><span class="p">,</span>
+            <span class="n">ridge_implementation</span><span class="o">=</span><span class="n">ridge_implementation</span><span class="p">,</span>
+            <span class="n">use_cache</span><span class="o">=</span><span class="n">use_cache</span><span class="p">,</span>
+            <span class="n">shuffle</span><span class="o">=</span><span class="n">shuffle</span><span class="p">,</span>
+            <span class="n">n_repeats</span><span class="o">=</span><span class="n">n_repeats</span><span class="p">,</span>
+            <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+            <span class="n">keep_train_stories_in_mem</span><span class="o">=</span><span class="n">keep_train_stories_in_mem</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid regression strategy: </span><span class="si">{</span><span class="n">strategy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">show_results</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mean_scores</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean correlation (averages across splits) (r): </span><span class="si">{</span><span class="n">mean_scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max  correlation (averaged across splits) (r): </span><span class="si">{</span><span class="n">mean_scores</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">show_results</span><span class="p">:</span>
+        <span class="n">vol_data</span> <span class="o">=</span> <span class="n">cortex</span><span class="o">.</span><span class="n">Volume</span><span class="p">(</span>
+            <span class="n">mean_scores</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">_auto&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;inferno&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">cortex</span><span class="o">.</span><span class="n">quickshow</span><span class="p">(</span><span class="n">vol_data</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">predictor</span><span class="si">}</span><span class="s2"> performance.&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">predictor</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">n_train_stories</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="c1"># save the plot</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">cortex</span><span class="o">.</span><span class="n">quickflat</span><span class="o">.</span><span class="n">make_png</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">predictor</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">strategy</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">),</span>
+            <span class="n">vol_data</span><span class="p">,</span>
+            <span class="n">recache</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="c1"># without print statement the plot does not show up.</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mean_scores</span><span class="p">,</span> <span class="n">all_scores</span><span class="p">,</span> <span class="n">all_weights</span><span class="p">,</span> <span class="n">best_alphas</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="encoders.main.do_simple_regression" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <code class="highlight language-python"><span class="n">do_simple_regression</span><span class="p">(</span><span class="n">predictor</span><span class="o">=</span><span class="s1">&#39;embeddings&#39;</span><span class="p">,</span> <span class="n">stories</span><span class="o">=</span><span class="n">STORIES</span><span class="p">,</span> <span class="n">n_train_stories</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">test_story</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="s1">&#39;UTS02&#39;</span><span class="p">,</span> <span class="n">tr_len</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">n_delays</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;lanczos&#39;</span><span class="p">,</span> <span class="n">ridge_implementation</span><span class="o">=</span><span class="s1">&#39;ridge_huth&#39;</span><span class="p">,</span> <span class="n">use_cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">keep_train_stories_in_mem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Run regression for n_repeats and return results.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_simple_regression(predictor)" class="doc doc-heading doc-heading-parameter">                  <code>predictor</code>
+</h3>            </td>
+            <td>
+                  <code>(envelope, embeddings, embeddings_huth)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Which predictor to use for the regression. "envelope": audio envelope that
+participants heard. "embeddings": embeddings computed from the words that
+participants heard. "embeddings_huth": embeddings which were used in the
+huth paper (https://www.nature.com/articles/s41597-023-02437-z)</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#34;envelope&#34;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_simple_regression(stories)" class="doc doc-heading doc-heading-parameter">                  <code>stories</code>
+</h3>            </td>
+            <td>
+                  <code>list[str]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Pool of stories, the default is determined by the config.yaml</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="encoders.main.STORIES">STORIES</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_simple_regression(n_train_stories)" class="doc doc-heading doc-heading-parameter">                  <code>n_train_stories</code>
+</h3>            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[int]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The amount of training stories sampled from <code>stories</code>, if this is <code>None</code> will
+use all except one story.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_simple_regression(test_story)" class="doc doc-heading doc-heading-parameter">                  <code>test_story</code>
+</h3>            </td>
+            <td>
+                  <code>str or `None`</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The story on which the regression models will be tested.
+If <code>None</code>, the test story will be randomly selected from the pool of stories.</p>
+              </div>
+            </td>
+            <td>
+                  <code>`None`</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_simple_regression(n_repeats)" class="doc doc-heading doc-heading-parameter">                  <code>n_repeats</code>
+</h3>            </td>
+            <td>
+                  <code>int</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>strategy="simple"</code>, determines how often regression is repeated on a
+different train/test set.</p>
+              </div>
+            </td>
+            <td>
+                  <code>5</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_simple_regression(subject)" class="doc doc-heading doc-heading-parameter">                  <code>subject</code>
+</h3>            </td>
+            <td>
+                  <code>(UTS01, UTS02, UTS03, UTS04, UTS05, UTS06, UTS07, UTS08)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>default="UTS02"
+Subject identifier</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#34;UTS01&#34;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_simple_regression(tr_len)" class="doc doc-heading doc-heading-parameter">                  <code>tr_len</code>
+</h3>            </td>
+            <td>
+                  <code>float</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Length of tr-windows used to sample fMRI data.</p>
+              </div>
+            </td>
+            <td>
+                  <code>2.0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_simple_regression(n_delays)" class="doc doc-heading doc-heading-parameter">                  <code>n_delays</code>
+</h3>            </td>
+            <td>
+                  <code>int</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>How many delays are used to model the HRF, which is modeled by adding
+a shifted set of duplicated features for each delay. <code>n_delays=5</code> implies
+that the the features of the stimulus are shifted concatinated 5 times
+to training/testing data.</p>
+              </div>
+            </td>
+            <td>
+                  <code>4</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_simple_regression(interpolation)" class="doc doc-heading doc-heading-parameter">                  <code>interpolation</code>
+</h3>            </td>
+            <td>
+                  <code>(lanczos, average)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to use lanczos interpolation or just average the words within a TR.
+Only applies to the 'embeddings' predictor.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#34;lanczos&#34;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_simple_regression(ridge_implementation)" class="doc doc-heading doc-heading-parameter">                  <code>ridge_implementation</code>
+</h3>            </td>
+            <td>
+                  <code>(ridgeCV, ridge_huth)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Which implementation of ridge regression to use. "ridgeCV" uses the RidgeCV
+function from sklearn.
+"ridge_huth" uses the implementation from the Huth lab codebase which applies
+SVD to the data matrix and computes correlation scores with bootstrapping.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#34;ridgeCV&#34;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_simple_regression(alphas)" class="doc doc-heading doc-heading-parameter">                  <code>alphas</code>
+</h3>            </td>
+            <td>
+                  <code>np.ndarray or `None`</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Array of alpha values to optimize over. If <code>None</code>, will choose
+default value of the regression function.</p>
+              </div>
+            </td>
+            <td>
+                  <code>= `None`</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_simple_regression(use_cache)" class="doc doc-heading doc-heading-parameter">                  <code>use_cache</code>
+</h3>            </td>
+            <td>
+                  <code>bool</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether the cache is used for <code>envelope</code> features.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_simple_regression(shuffle)" class="doc doc-heading doc-heading-parameter">                  <code>shuffle</code>
+</h3>            </td>
+            <td>
+                  <code>bool</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to shuffle the predictors (features).</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_simple_regression(seed)" class="doc doc-heading doc-heading-parameter">                  <code>seed</code>
+</h3>            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[int]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Seed determining sampling of stories.</p>
+              </div>
+            </td>
+            <td>
+                  <code>123</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.main.do_simple_regression(keep_train_stories_in_mem)" class="doc doc-heading doc-heading-parameter">                  <code>keep_train_stories_in_mem</code>
+</h3>            </td>
+            <td>
+                  <code>bool</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether stories are kept in memory after first loading. Unless when using all
+stories turning this off will reduce the memory footprint, but increase the
+time is spent loading data.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>mean_scores</code></td>            <td>
+                  <code><span title="numpy.ndarray">ndarray</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The mean prediction scores for each repeat.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+<td><code>scores_list</code></td>            <td>
+                  <code>list of np.ndarray</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The scores for each repeat.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+<td><code>weights</code></td>            <td>
+                  <code>list of np.ndarray</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The regression weights for each repeat.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+<td><code>alphas</code></td>            <td>
+                  <code>list of float or list of np.ndarray</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The best alphas for each voxel, for each repeat.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>src/encoders/main.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">do_simple_regression</span><span class="p">(</span>
+    <span class="n">predictor</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;embeddings&quot;</span><span class="p">,</span>
+    <span class="n">stories</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">STORIES</span><span class="p">,</span>
+    <span class="n">n_train_stories</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">test_story</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">n_repeats</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">subject</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;UTS02&quot;</span><span class="p">,</span>
+    <span class="n">tr_len</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span>
+    <span class="n">n_delays</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">interpolation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;lanczos&quot;</span><span class="p">,</span>
+    <span class="n">ridge_implementation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;ridge_huth&quot;</span><span class="p">,</span>
+    <span class="n">use_cache</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">shuffle</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">123</span><span class="p">,</span>
+    <span class="n">keep_train_stories_in_mem</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]</span>
+<span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run regression for n_repeats and return results.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    predictor : {&quot;envelope&quot;, &quot;embeddings&quot;, &quot;embeddings_huth&quot;}</span>
+<span class="sd">        Which predictor to use for the regression. &quot;envelope&quot;: audio envelope that</span>
+<span class="sd">        participants heard. &quot;embeddings&quot;: embeddings computed from the words that</span>
+<span class="sd">        participants heard. &quot;embeddings_huth&quot;: embeddings which were used in the</span>
+<span class="sd">        huth paper (https://www.nature.com/articles/s41597-023-02437-z)</span>
+<span class="sd">    stories: list[str], default=STORIES</span>
+<span class="sd">        Pool of stories, the default is determined by the config.yaml</span>
+<span class="sd">    n_train_stories: int, optional</span>
+<span class="sd">        The amount of training stories sampled from `stories`, if this is `None` will</span>
+<span class="sd">        use all except one story.</span>
+<span class="sd">    test_story : str or `None`, default=`None`</span>
+<span class="sd">        The story on which the regression models will be tested.</span>
+<span class="sd">        If `None`, the test story will be randomly selected from the pool of stories.</span>
+<span class="sd">    n_repeats : int, default=5</span>
+<span class="sd">        If `strategy=&quot;simple&quot;`, determines how often regression is repeated on a</span>
+<span class="sd">        different train/test set.</span>
+<span class="sd">    subject : {&quot;UTS01&quot;, &quot;UTS02&quot;, &quot;UTS03&quot;, &quot;UTS04&quot;, &quot;UTS05&quot;, &quot;UTS06&quot;, &quot;UTS07&quot;, &quot;UTS08&quot;},</span>
+<span class="sd">        default=&quot;UTS02&quot;</span>
+<span class="sd">        Subject identifier</span>
+<span class="sd">    tr_len: float, default=2.0</span>
+<span class="sd">        Length of tr-windows used to sample fMRI data.</span>
+<span class="sd">    n_delays: int, default=4</span>
+<span class="sd">        How many delays are used to model the HRF, which is modeled by adding</span>
+<span class="sd">        a shifted set of duplicated features for each delay. `n_delays=5` implies</span>
+<span class="sd">        that the the features of the stimulus are shifted concatinated 5 times</span>
+<span class="sd">        to training/testing data.</span>
+<span class="sd">    interpolation : {&quot;lanczos&quot;, &quot;average&quot;}, default=&quot;lanczos&quot;</span>
+<span class="sd">        Whether to use lanczos interpolation or just average the words within a TR.</span>
+<span class="sd">        Only applies to the &#39;embeddings&#39; predictor.</span>
+<span class="sd">    ridge_implementation : {&quot;ridgeCV&quot;, &quot;ridge_huth&quot;}, default=&quot;ridge_huth&quot;</span>
+<span class="sd">        Which implementation of ridge regression to use. &quot;ridgeCV&quot; uses the RidgeCV</span>
+<span class="sd">        function from sklearn.</span>
+<span class="sd">        &quot;ridge_huth&quot; uses the implementation from the Huth lab codebase which applies</span>
+<span class="sd">        SVD to the data matrix and computes correlation scores with bootstrapping.</span>
+<span class="sd">    alphas : np.ndarray or `None`, default = `None`</span>
+<span class="sd">        Array of alpha values to optimize over. If `None`, will choose</span>
+<span class="sd">        default value of the regression function.</span>
+<span class="sd">    use_cache: bool, default=True</span>
+<span class="sd">        Whether the cache is used for `envelope` features.</span>
+<span class="sd">    shuffle: bool, default=False</span>
+<span class="sd">        Whether to shuffle the predictors (features).</span>
+<span class="sd">    seed: int | None, default=123</span>
+<span class="sd">        Seed determining sampling of stories.</span>
+<span class="sd">    keep_train_stories_in_mem: bool, default=True</span>
+<span class="sd">        Whether stories are kept in memory after first loading. Unless when using all</span>
+<span class="sd">        stories turning this off will reduce the memory footprint, but increase the</span>
+<span class="sd">        time is spent loading data.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    mean_scores : np.ndarray</span>
+<span class="sd">        The mean prediction scores for each repeat.</span>
+<span class="sd">    scores_list : list of np.ndarray</span>
+<span class="sd">        The scores for each repeat.</span>
+<span class="sd">    weights : list of np.ndarray</span>
+<span class="sd">        The regression weights for each repeat.</span>
+<span class="sd">    alphas : list of float or list of np.ndarray</span>
+<span class="sd">        The best alphas for each voxel, for each repeat.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">n_train_stories</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">n_train_stories</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">stories</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">test_story</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">stories</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">test_story</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;test_story: </span><span class="si">{</span><span class="n">test_story</span><span class="si">}</span><span class="s2"> is not in the pool of all stories.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">e</span>
+
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+
+    <span class="c1"># data dicts</span>
+    <span class="n">X_data_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">y_data_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="c1"># result arrays</span>
+    <span class="n">scores_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">weights_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">best_alphas_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">repeat</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeats</span><span class="p">):</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Repeat </span><span class="si">{</span><span class="n">repeat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 1. choose stories to sample for this repeat</span>
+        <span class="k">if</span> <span class="n">test_story</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">curr_all_stories</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span>
+                <span class="n">stories</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_train_stories</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+            <span class="n">curr_train_stories</span> <span class="o">=</span> <span class="n">curr_all_stories</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">curr_test_stories</span> <span class="o">=</span> <span class="n">curr_all_stories</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">curr_train_stories</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span>
+                <span class="n">stories</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_train_stories</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+            <span class="n">curr_test_stories</span> <span class="o">=</span> <span class="p">[</span><span class="n">test_story</span><span class="p">]</span>
+            <span class="n">curr_all_stories</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">curr_train_stories</span><span class="p">,</span> <span class="o">*</span><span class="n">curr_test_stories</span><span class="p">]</span>
+
+        <span class="c1"># 2. load data for stories</span>
+        <span class="n">stories_to_load</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+            <span class="nb">set</span><span class="p">(</span><span class="n">curr_all_stories</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">X_data_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stories_to_load</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">repeat</span><span class="si">}</span><span class="s2"> | Loading data&quot;</span><span class="p">)</span>
+            <span class="n">X_data_dict_new</span><span class="p">,</span> <span class="n">y_data_dict_new</span> <span class="o">=</span> <span class="n">load_data_dict</span><span class="p">(</span>
+                <span class="n">stories_to_load</span><span class="p">,</span>
+                <span class="n">subject</span><span class="p">,</span>
+                <span class="n">predictor</span><span class="p">,</span>
+                <span class="n">interpolation</span><span class="p">,</span>
+                <span class="n">shuffle</span><span class="p">,</span>
+                <span class="n">tr_len</span><span class="p">,</span>
+                <span class="n">n_delays</span><span class="p">,</span>
+                <span class="n">use_cache</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">X_data_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">X_data_dict_new</span><span class="p">)</span>
+            <span class="n">y_data_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">y_data_dict_new</span><span class="p">)</span>
+
+        <span class="c1"># 3. run regression</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">repeat</span><span class="si">}</span><span class="s2"> | Running Regression&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ridge_implementation</span> <span class="o">==</span> <span class="s2">&quot;ridge_huth&quot;</span><span class="p">:</span>
+            <span class="n">scores</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">best_alphas</span> <span class="o">=</span> <span class="n">ridge_regression_huth</span><span class="p">(</span>
+                <span class="n">train_stories</span><span class="o">=</span><span class="n">curr_train_stories</span><span class="p">,</span>
+                <span class="n">test_stories</span><span class="o">=</span><span class="n">curr_test_stories</span><span class="p">,</span>
+                <span class="n">X_data_dict</span><span class="o">=</span><span class="n">X_data_dict</span><span class="p">,</span>
+                <span class="n">y_data_dict</span><span class="o">=</span><span class="n">y_data_dict</span><span class="p">,</span>
+                <span class="n">score_fct</span><span class="o">=</span><span class="n">pearsonr</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">scores</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">best_alphas</span> <span class="o">=</span> <span class="n">ridge_regression</span><span class="p">(</span>
+                <span class="n">train_stories</span><span class="o">=</span><span class="n">curr_train_stories</span><span class="p">,</span>
+                <span class="n">test_stories</span><span class="o">=</span><span class="n">curr_test_stories</span><span class="p">,</span>
+                <span class="n">X_data_dict</span><span class="o">=</span><span class="n">X_data_dict</span><span class="p">,</span>
+                <span class="n">y_data_dict</span><span class="o">=</span><span class="n">y_data_dict</span><span class="p">,</span>
+                <span class="n">score_fct</span><span class="o">=</span><span class="n">pearsonr</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+            <span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">repeat</span><span class="si">}</span><span class="s2"> | Mean corr: </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">repeat</span><span class="si">}</span><span class="s2"> | Max corr : </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">keep_train_stories_in_mem</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">X_data_dict</span>
+            <span class="k">del</span> <span class="n">y_data_dict</span>
+            <span class="n">X_data_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+            <span class="n">y_data_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+        <span class="c1"># 4. append results</span>
+        <span class="n">scores_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+        <span class="n">weights_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+        <span class="n">best_alphas_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">best_alphas</span><span class="p">)</span>
+
+    <span class="c1"># aggregate scores</span>
+    <span class="n">mean_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores_list</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">mean_scores</span><span class="p">,</span> <span class="n">scores_list</span><span class="p">,</span> <span class="n">weights_list</span><span class="p">,</span> <span class="n">best_alphas_list</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking", "navigation.tabs", "navigation.path", "navigation.sections", "content.code.copy"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>
