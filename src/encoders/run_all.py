@@ -8,7 +8,7 @@ from typing import Union
 
 import numpy as np
 
-from encoders.regression import do_regression
+from encoders.main import do_regression
 from encoders.utils import (
     check_make_dirs,
     create_run_folder_name,
