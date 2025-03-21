@@ -7,3 +7,4 @@ data
 runs
 node_modules
 .ruff_cache
+plots
