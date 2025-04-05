@@ -1,7 +1,10 @@
 CACHE_DIR: .cache
 DATA_DIR: ds003020
 RUNS_DIR: runs
-INKSCAPE_DIR: /path/to/inkscape
+# e.g. for mac usually /Applications/Inkscape.app/Contents/MacOS/inkscape
+INKSCAPE_PATH: /path/to/inkscape
+# find this by using /path/to/inkscape --version
+INKSCAPE_VERSION: X.Y.Z
 TR_LEN: 2.0
 STORIES:
   [
