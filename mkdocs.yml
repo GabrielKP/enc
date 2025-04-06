@@ -1,11 +1,11 @@
 site_name: The Encoders
-site_author: Kristijan
-site_url: https://gabrielkp.com/enc
-repo_url: https://github.com/GabrielKP/enc
+site_author: Anonymized
+site_url: Anonymized
+repo_url: Anonymized
 nav:
   - "Home": "index.md"
   - "Report":
-      - Intro: https://kristijanarmeni.github.io/encoders_report" target="_blank
+      - Intro: Anonymized target="_blank
   - "Documentation":
       - "run_all": "run_all.md"
       - "regression": "regression.md"
