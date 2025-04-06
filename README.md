@@ -1,12 +1,10 @@
 <h1 align="center">Encoding Models</h1>
 
 <p align="center">A project reproducing endocing models published by <a href="https://github.com/HuthLab/deep-fMRI-dataset"><i>LeBel et al. 2023</i></a>.</p>
-<p align="center">We documented our results in this <a href="https://kristijanarmeni.github.io/encoders_report/"><i>Report</i></a>.</p>
+<p align="center">We documented our results in this <i>Report</i> (unlinked for anonymization)</a>.</p>
 
 <p align="center">
 <a href="https://www.python.org/"><img alt="code" src="https://img.shields.io/badge/code-Python-blue?logo=Python"></a>
-<a href="https://gabrielkp.com/enc/"><img alt="documentation" src="https://img.shields.io/badge/docs-MkDocs-708FCC.svg?style=flat"></a>
-<a href="https://kristijanarmeni.github.io/encoders_report/"><img alt="documentation" src="https://img.shields.io/badge/Report-MystMD-white?logo=Markdown"></a>
 <a href="https://scikit-learn.org/stable/"><img alt="ML framework" src="https://img.shields.io/badge/ML-Scikit%20Learn-orange?logo=Scikit-learn"></a>
 <a href="https://docs.astral.sh/ruff/"><img alt="Code style: Ruff" src="https://img.shields.io/badge/code%20style-Ruff-green?logo=Ruff"></a>
 <a href="https://python-poetry.org/"><img alt="packaging framwork: Poetry" src="https://img.shields.io/badge/packaging-Poetry-lightblue?logo=Poetry"></a>
@@ -24,7 +22,7 @@ See below (Reproduce correlation results) how to reproduce the correlation resul
 
 1. Clone repository, change directory into repository directory
 ```sh
-git clone git@github.com:GabrielKP/enc.git
+git clone anonymized
 cd enc
 ```
 
@@ -217,9 +215,7 @@ nano config.yaml
 
 ## Team
 
-- [Gabriel Kressing Palacios](https://gabrielkp.com/)
-- Gio Li
-- [Kristijan Armeni](https://www.kristijanarmeni.net/)
+Anonymized.
 
 
 ## License

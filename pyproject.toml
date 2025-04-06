@@ -3,9 +3,7 @@ name = "encoders"
 version = "0.1.0"
 description = "Project to reproducing fMRI encoding models by LeBel et al (2023)"
 authors = [
-    "Kristijan Armeni <kristijan.armeni@gmail.com>",
-    "Gabriel Kressin Palacios <gkressi1@jhu.edu>",
-    "Gio Zhuoyang Li <zli230@jhu.edu>",
+    "Anonymized"
     ]
 readme = "README.md"
 

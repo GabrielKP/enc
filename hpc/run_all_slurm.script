@@ -7,7 +7,7 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=karmeni1@jh.edu
+#SBATCH --mail-user=anonymous
 #SBATCH --output=UTS02_run_all.job.%j.out
 #SBATCH --error=UTS02_run_all.job.%j.err
 # ---------------------------------------------------
@@ -15,7 +15,7 @@
 ml anaconda3/2024.02-1
 conda activate enc
 
-source_dir="/data/choney1/karmeni1/enc/src"
+source_dir="/data/anon/ymous/enc/src"
 
 python  $source_dir/run_all.py \
 --subject "UTS02" \
