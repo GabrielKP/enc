@@ -1,0 +1,12 @@
+python -m encoders.run_all \
+--subject UTS03 \
+--feature 'eng1000' \
+--ndelays 4 \
+--interpolation 'lanczos' \
+--ridge_implementation 'ridgeCV' \
+--n_train_stories 1 \
+--test_story 'wheretheressmoke' \
+--cross_validation 'simple' \
+--n_repeats 1 \
+--no_keep_train_stories_in_mem \
+--run_folder_name test-repli-exp-1 \

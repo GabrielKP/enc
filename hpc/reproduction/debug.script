@@ -1,0 +1,13 @@
+python -m lebel_encoding.run_all_replication \
+--subject UTS01 \
+--feature eng1000 \
+--test_story wheretheressmoke \
+--n_train_stories 1 \
+--n_repeats 2 \
+--trim 5 \
+--ndelays 4 \
+--nboots 20 \
+--chunklen 10 \
+--nchunks 10 \
+--use_corr \
+--run_folder_name test-run \
