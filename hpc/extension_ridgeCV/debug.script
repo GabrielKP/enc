@@ -1,0 +1,13 @@
+python -m encoders.run_all \
+--subject UTS01 \
+--feature 'envelope' \
+--do_shuffle \
+--ndelays 4 \
+--interpolation 'lanczos' \
+--ridge_implementation 'ridgeCV' \
+--n_train_stories 1 \
+--test_story 'wheretheressmoke' \
+--cross_validation 'simple' \
+--n_repeats 15 \
+--no_keep_train_stories_in_mem \
+--run_folder_name test-run-extension \

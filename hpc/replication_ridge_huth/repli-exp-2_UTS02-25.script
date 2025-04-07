@@ -1,0 +1,27 @@
+#!/bin/bash
+#SBATCH --job-name=repli-exp-2_UTS02-25.script
+#SBATCH --time=07:00:00
+#SBATCH --mem 180GB
+#SBATCH --partition=parallel
+#SBATCH --signal=USR2
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=8
+ml anaconda3/2024.02-1
+conda activate enc
+
+python -m encoders.run_all \
+--subject UTS02 \
+--feature 'all' \
+--n_train_stories 25 \
+--test_story wheretheressmoke \
+--cross_validation 'simple' \
+--interpolation 'lanczos' \
+--ridge_implementation 'ridge_huth' \
+--n_repeats 15 \
+--ndelays 4 \
+--nboots 20 \
+--chunklen 10 \
+--nchunks 10 \
+--use_corr \
+--no_keep_train_stories_in_mem \
+--run_folder_name 2025-03-21_09-25_551191 \
