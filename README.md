@@ -1,6 +1,6 @@
 <h1 align="center">Encoding Models</h1>
 
-<p align="center">A project reproducing endocing models published by <a href="https://github.com/HuthLab/deep-fMRI-dataset"><i>LeBel et al. 2023</i></a>.</p>
+<p align="center">A project reproducing & replicating endocing models published by <a href="https://github.com/HuthLab/deep-fMRI-dataset"><i>LeBel et al. 2023</i></a>.</p>
 <p align="center">We documented our results in this <a href="https://kristijanarmeni.github.io/encoders_report/"><i>Report</i></a>.</p>
 
 <p align="center">
@@ -21,8 +21,8 @@ The reproduction of the figures requires the installation of the relevant depend
 We provide these results in an online repository.
 See below (Reproduce correlation results) how to reproduce the correlation results.
 
-
 1. Clone repository, change directory into repository directory
+
 ```sh
 git clone git@github.com:GabrielKP/enc.git
 cd enc
@@ -39,18 +39,25 @@ conda activate enc
 pip install .
 
 # install git-annex (required to download data from Lebel et al. 2011)
-https://handbook.datalad.org/en/latest/intro/installation.html
+
 ```
 
-3. Download data
+3. Install [git-annex and datalad](https://handbook.datalad.org/en/latest/intro/installation.html) (required to download data from Lebel et al. 2011)
+
+4. Download repository data
 
 ```sh
-python src/encoders/download_data.py --figures
-# this will download some data from the OpenNeuro dataset required for plotting brains
-# this will also create a config.yaml file which you can adapt.
+# Only download data required for plotting results
+python src/encoders/download_data.py [-d DATA_DIR] --figures
 ```
 
-For the correlation results, download the [`runs.zip` file](https://osf.io/download/g9cy3) into the project directory, and unzip it there, such that you have a `runs` directory with the experiment folders as subdirs:
+Without `-d DATA_DIR` the data will be downloaded into the folder `ds003020` of the project directory.
+To download the data into a custom dir, specify `-d DATA_DIR` (it is recommended to call the last folder `ds003020` as that is the default dataset name).
+
+5. Download correlation results
+
+Download [`runs.zip` file](https://osf.io/download/g9cy3) and unzip it such that you have a `runs` directory with the experiment folders as subdirectories:
+
 ```
 runs/extension_ridgeCV
 runs/replication_ridge_huth
@@ -58,40 +65,55 @@ runs/replication_ridgeCV
 runs/reproduction
 ```
 
-1. Install [inkscape](https://inkscape.org/) and set config values
+1. Install [inkscape](https://inkscape.org/) (required for plotting):
 
 Open the `config.yaml` and set the following values accordingly.
+
 ```yaml
 INKSCAPE_PATH: path/to/inkscape/binary
 INKSCAPE_VERSION: X.Y.Z
 ```
+
 For mac, you usually can [find inkscape as described here](https://stackoverflow.com/a/22085247).
 
-5. Configure pycortex:
+5. Configure pycortex (required for plotting):
+
+**Script**
+
+```sh
+python src/encoders/update_pycortex_config
+```
+
+**Manual**
 
 Find the location of your pycortext config with the python terminal.
 Type `python` in the command line with the virtual environment activated.
 Then execute following commands:
+
 ```py
 import cortex
 cortex.options.usercfg
 ```
-This should give you a path to the config file, open the file with an editor of choice (e.g. `vim path/to/options.cfg`)
 
-Now modify the filestore entry to point towards `DATA_DIR/derivative/pycortex-db`.
+This should give you a path to the config file, copy it and exit the terminal.
+
+```sh
+# open the file with an editor of choice (e.g. vim)
+vim path/to/options.cfg
+```
+
+Modify the entry at `filestore` to `DATA_DIR/derivative/pycortex-db`.
 Whereas `DATA_DIR` is the directory of the Lebel et al. data repository.
-If you have followed the instructions above then `DATA_DIR=path/to/enc/ds003020`, if you chose a custom `DATA_DIR` use that instead.
-
+E.g. if you did not specify a custom datadir, `DATA_DIR` then it is `/path/to/this/repository/ds003020`.
 
 6. Reproduce the plots in the figures:
 
 ```sh
-# will create plots for all plots
+# will create plots for all figures
 python src/encoders/plot.py
 ```
 
 ## Reproduce correlation results
-
 
 1. Follow step 1. and 2. from above.
 
@@ -99,10 +121,7 @@ python src/encoders/plot.py
 
 ```sh
 # all stories for the 3 subjects in our analysis
-python src/encoders/download_data.py --stories all --subjects UTS01, UTS02, UTS03
-
-# you can also install the path into a custom dir
-python src/encoders/download_data.py --data_dir /path/to/custom/dir
+python src/encoders/download_data.py --stories all --subjects UTS01 UTS02 UTS03
 ```
 
 3. Run test regression
@@ -220,6 +239,5 @@ nano config.yaml
 - [Gabriel Kressing Palacios](https://gabrielkp.com/)
 - Gio Li
 - [Kristijan Armeni](https://www.kristijanarmeni.net/)
-
 
 ## License
