@@ -56,7 +56,7 @@ mpl.rcParams["xtick.labelsize"] = 14
 mpl.rcParams["ytick.labelsize"] = 14
 mpl.rcParams["axes.labelsize"] = 14
 mpl.rcParams["figure.labelsize"] = 14
-mpl.rcParams["font.family"] = "sans-serif"
+mpl.rcParams["font.family"] = "DeJavu Serif"
 mpl.rcParams["font.sans-serif"] = "Verdana"
 
 

@@ -1,7 +1,7 @@
 import argparse
 import shutil
 from pathlib import Path
-from typing import Optional, Union
+from typing import Optional, Union, cast
 
 import yaml
 from datalad.api import clone, get  # type: ignore
@@ -44,7 +44,12 @@ def download_data(
     """
 
     # 0. parameters
-    data_dir = data_dir or "ds003020"
+    if data_dir is None:
+        if Path("config.yaml").exists():
+            data_dir = cast(str, load_config()["DATA_DIR"])
+        else:
+            data_dir = "ds003020"
+
     if not isinstance(subjects, list):
         subjects = [subjects]
 
@@ -75,8 +80,6 @@ def download_data(
                 dataset=data_dir,
                 path=Path(data_dir, f"derivative/pycortex-db/{subject}"),
             )
-
-        log.info("Downloading correlation results from OSF")
 
     else:
         # Download specified neuro data

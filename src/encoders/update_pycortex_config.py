@@ -1,5 +1,6 @@
 import configparser
 import shutil
+from pathlib import Path
 
 import cortex
 
@@ -23,9 +24,10 @@ def update_pycortex_config():
     pycortex_config = configparser.ConfigParser()
     pycortex_config.read([pycortex_config_path])
 
-    enc_config = config = load_config()
-    config["filestore"] = enc_config["DATA_DIR"]
-
+    enc_config = load_config()
+    pycortex_config["basic"]["filestore"] = (
+        str(Path(enc_config["DATA_DIR"])) + "/derivative/pycortex-db"
+    )
     # 3. save pycortex config
     with open(pycortex_config_path, "w") as f_out:
         pycortex_config.write(f_out)
