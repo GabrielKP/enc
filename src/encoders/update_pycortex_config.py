@@ -2,7 +2,8 @@ import configparser
 import shutil
 
 import cortex
-from utils import get_logger, load_config
+
+from encoders.utils import get_logger, load_config
 
 log = get_logger(__name__)
 
