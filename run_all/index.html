@@ -1,0 +1,2144 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Kristijan">
+      
+      
+        <link rel="canonical" href="https://gabrielkp.com/enc/run_all/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../regression/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>run_all - The Encoders</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#encoders.run_all.run_all" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="The Encoders" class="md-header__button md-logo" aria-label="The Encoders" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The Encoders
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              run_all
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/GabrielKP/enc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="https://kristijanarmeni.github.io/encoders_report" target="_blank" class="md-tabs__link">
+          
+  
+  
+  Report
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Documentation
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="The Encoders" class="md-nav__button md-logo" aria-label="The Encoders" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    The Encoders
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/GabrielKP/enc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Report
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Report
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://kristijanarmeni.github.io/encoders_report" target="_blank" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Intro
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Documentation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    run_all
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    run_all
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;run_all
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=" run_all">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(cross_validation)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;cross_validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(subject)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;subject
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(feature)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;feature
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(n_train_stories)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;n_train_stories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(test_story)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;test_story
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(ndelays)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;ndelays
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(interpolation)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;interpolation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(ridge_implementation)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;ridge_implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(do_shuffle)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;do_shuffle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(use_cache)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;use_cache
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(keep_train_stories_in_mem)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;keep_train_stories_in_mem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(seed)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;seed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(alphas)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;alphas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(nboots)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;nboots
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(chunklen)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;chunklen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(nchunks)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;nchunks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(singcutoff)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;singcutoff
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(single_alpha)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;single_alpha
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(use_corr)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;use_corr
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(run_folder_name)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;run_folder_name
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    regression
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    features
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../download_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    download_data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    utils
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;run_all
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=" run_all">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(cross_validation)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;cross_validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(subject)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;subject
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(feature)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;feature
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(n_train_stories)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;n_train_stories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(test_story)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;test_story
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(ndelays)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;ndelays
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(interpolation)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;interpolation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(ridge_implementation)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;ridge_implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(do_shuffle)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;do_shuffle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(use_cache)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;use_cache
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(keep_train_stories_in_mem)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;keep_train_stories_in_mem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(seed)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;seed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(alphas)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;alphas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(nboots)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;nboots
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(chunklen)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;chunklen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(nchunks)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;nchunks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(singcutoff)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;singcutoff
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(single_alpha)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;single_alpha
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(use_corr)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;use_corr
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders.run_all.run_all(run_folder_name)" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;run_folder_name
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>run_all</h1>
+
+<div class="doc doc-object doc-module">
+
+
+
+
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="encoders.run_all.run_all" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <code class="highlight language-python"><span class="n">run_all</span><span class="p">(</span><span class="n">cross_validation</span><span class="o">=</span><span class="s1">&#39;simple&#39;</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="s1">&#39;UTS02&#39;</span><span class="p">,</span> <span class="n">feature</span><span class="o">=</span><span class="s1">&#39;eng1000&#39;</span><span class="p">,</span> <span class="n">n_train_stories</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">test_story</span><span class="o">=</span><span class="s1">&#39;wheretheressmoke&#39;</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ndelays</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;lanczos&#39;</span><span class="p">,</span> <span class="n">ridge_implementation</span><span class="o">=</span><span class="s1">&#39;ridge_huth&#39;</span><span class="p">,</span> <span class="n">do_shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">use_cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">keep_train_stories_in_mem</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">alphas</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">nboots</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">chunklen</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">nchunks</span><span class="o">=</span><span class="mi">125</span><span class="p">,</span> <span class="n">singcutoff</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span> <span class="n">single_alpha</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">use_corr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">run_folder_name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Runs encoding models n_repeat times and saves results data/runs to disk.</p>
+<p>The following outputs are saved:
+0. params.json : the parameters for the run
+    <code>data/runs/date-id/params.json</code>
+1. scores_mean.npy : the mean scores across folds
+    <code>data/runs/date-id/predictor/subject/n_training_stories/shuffle/scores_mean.npy</code>
+2. scores.npy : the score for each separate fold
+    <code>data/runs/date-id/predictor/subject/n_training_stories/shuffle/fold/scores.npy</code>
+3. weights.npy : the model weights for each separate fold
+    <code>data/runs/date-id/predictor/subject/n_training_stories/shuffle/fold/weights.npy</code>
+4. best_alphas.npy : the best alphas for each voxel in that fold
+    <code>data/runs/date-id/predictor/subject/n_training_stories/shuffle/fold/best_alphas.npy</code></p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(cross_validation)" class="doc doc-heading doc-heading-parameter">                  <code>cross_validation</code>
+</h3>            </td>
+            <td>
+                  <code>(<span title="loocv">loocv</span>, <span title="simple">simple</span>)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>loocv</code> uses leave-one-out cross-validation for n_stories. The stories are
+ determined by the order of the <code>stories</code> parameter or its default value in
+ <code>config.yaml</code>.
+<code>simple</code> computes the regression for a train/test split containing n_stories
+ within each repeat.
+Stories are sampled randomly for each repeat.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#34;loocv&#34;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(subject)" class="doc doc-heading doc-heading-parameter">                  <code>subject</code>
+</h3>            </td>
+            <td>
+                  <code>str or list of str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Subject identifier.
+Can be one or a list of : {<code>"all"</code>, <code>"UTS01"</code>, <code>"UTS02"</code>, <code>"UTS03"</code>, <code>"UTS04"</code>,
+ <code>"UTS05"</code>, <code>"UTS06"</code>, <code>"UTS07"</code>, <code>"UTS08"</code>}</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#34;UTS02&#34;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(feature)" class="doc doc-heading doc-heading-parameter">                  <code>feature</code>
+</h3>            </td>
+            <td>
+                  <code>(<span title="all">all</span>, <span title="envelope">envelope</span>, <span title="eng1000">eng1000</span>)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Which predictor to run.
+<code>all</code> will run separate encoding models for both predictors (default).
+<code>envelope</code> will run the encoding model with the audio envelope as predictor.
+<code>eng1000</code> will run the encoding model with the word embeddings of the stories
+ as predictor.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#34;all&#34;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(n_train_stories)" class="doc doc-heading doc-heading-parameter">                  <code>n_train_stories</code>
+</h3>            </td>
+            <td>
+                  <code>int or list of int</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Number o of training stories for the encoding model. If a list is given, the
+ encoding model will be fitted with each number separately.</p>
+              </div>
+            </td>
+            <td>
+                  <code>[1, 3, 5]</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(test_story)" class="doc doc-heading doc-heading-parameter">                  <code>test_story</code>
+</h3>            </td>
+            <td>
+                  <code><span title="str">str</span> or None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The story to use as the test set. If <code>None</code>, it will be sampled randomly.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#34;wheretheressmoke&#34;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(ndelays)" class="doc doc-heading doc-heading-parameter">                  <code>ndelays</code>
+</h3>            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>By how many TR's features are delayed to model the HRF. For <code>ndelays=5</code>, the
+ features of the predictor are shifted by one TR and concatinated to themselves
+ for five times.</p>
+              </div>
+            </td>
+            <td>
+                  <code>5</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(interpolation)" class="doc doc-heading doc-heading-parameter">                  <code>interpolation</code>
+</h3>            </td>
+            <td>
+                  <code>(<span title="lanczos">lanczos</span>, <span title="average">average</span>)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to use lanczos interpolation or just average the words within a TR.
+Only applies if <code>predictor=eng1000</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#34;lanczos&#34;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(ridge_implementation)" class="doc doc-heading doc-heading-parameter">                  <code>ridge_implementation</code>
+</h3>            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Which ridge regression implementation to use.
+<code>ridgeCV</code> will use scikit-learn's RidgeCV.
+<code>ridge_huth</code> will use the ridge regression implementation from Lebel et al.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;ridge_huth&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(do_shuffle)" class="doc doc-heading doc-heading-parameter">                  <code>do_shuffle</code>
+</h3>            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether or not to run model fits with predictors shuffled (as a control).
+A separate subfolder ('shuffled') will be created in the run folder with
+these results.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(use_cache)" class="doc doc-heading doc-heading-parameter">                  <code>use_cache</code>
+</h3>            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether features are cached and reused.
+Only applies if <code>predictor=envelope</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(keep_train_stories_in_mem)" class="doc doc-heading doc-heading-parameter">                  <code>keep_train_stories_in_mem</code>
+</h3>            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether stories are kept in memory after first loading. Unless when using all
+stories turning this off will reduce the memory footprint, but increase the
+time is spent loading data. Only works if <code>cross_validation='simple'</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(seed)" class="doc doc-heading doc-heading-parameter">                  <code>seed</code>
+</h3>            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Seed determining sampling of stories</p>
+              </div>
+            </td>
+            <td>
+                  <code>123</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(alphas)" class="doc doc-heading doc-heading-parameter">                  <code>alphas</code>
+</h3>            </td>
+            <td>
+                  <code><span title="numpy.ndarray">ndarray</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Array of alpha values to optimize over.</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="numpy.logspace">logspace</span>(1, 3, 10)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(nboots)" class="doc doc-heading doc-heading-parameter">                  <code>nboots</code>
+</h3>            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The number of bootstrap samples to run. 15 to 30 works well.
+Only active for ridge_huth="ridge_huth".</p>
+              </div>
+            </td>
+            <td>
+                  <code>50</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(chunklen)" class="doc doc-heading doc-heading-parameter">                  <code>chunklen</code>
+</h3>            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>On each sample, the training data is broken into chunks of this length. This
+should be a few times longer than your delay/STRF. e.g. for a STRF with 3
+delays, I use chunks of length 10.
+Only active for ridge_huth="ridge_huth".</p>
+              </div>
+            </td>
+            <td>
+                  <code>40</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(nchunks)" class="doc doc-heading doc-heading-parameter">                  <code>nchunks</code>
+</h3>            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The number of training chunks held out to test ridge parameters for each
+bootstrap sample. The product of nchunks and chunklen is the total number of
+training samples held out for each sample, and this product should be about 20
+percent of the total length of the training data.</p>
+              </div>
+            </td>
+            <td>
+                  <code>125</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(singcutoff)" class="doc doc-heading doc-heading-parameter">                  <code>singcutoff</code>
+</h3>            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The first step in ridge regression is computing the singular value decomposition
+(SVD) of the stimulus Rstim. If Rstim is not full rank, some singular values
+will be approximately equal to zero and the corresponding singular vectors will
+be noise. These singular values/vectors should be removed both for speed (the
+fewer multiplications the better!) and accuracy. Any singular values less than
+singcutoff will be removed.
+Only active for ridge_huth="ridge_huth".</p>
+              </div>
+            </td>
+            <td>
+                  <code>1e-10</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(single_alpha)" class="doc doc-heading doc-heading-parameter">                  <code>single_alpha</code>
+</h3>            </td>
+            <td>
+                  <code><span title="boolean">boolean</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to use a single alpha for all responses. Good
+foridentification/decoding.
+Only active for ridge_huth="ridge_huth".</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(use_corr)" class="doc doc-heading doc-heading-parameter">                  <code>use_corr</code>
+</h3>            </td>
+            <td>
+                  <code><span title="boolean">boolean</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If True, this function will use correlation as its metric of model fit. If
+False, this function will instead use variance explained (R-squared) as its
+metric of model fit. For ridge regression this can make a big difference --
+highly regularized solutions will have very small norms and will thus explain
+very little variance while still leading to high correlations, as correlation
+is scale-free while R**2 is not.
+Only active for ridge_huth="ridge_huth".</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h3 id="encoders.run_all.run_all(run_folder_name)" class="doc doc-heading doc-heading-parameter">                  <code>run_folder_name</code>
+</h3>            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The name of the folder in the runs directory (as specificed in
+<code>encoders.utils.load_config()['RUNS_DIR']</code>) to save the results in.
+If it doesn't exist, it is created on the fly.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;&#39;</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/encoders/run_all.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">run_all</span><span class="p">(</span>
+    <span class="n">cross_validation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;simple&quot;</span><span class="p">,</span>
+    <span class="n">subject</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="s2">&quot;UTS02&quot;</span><span class="p">,</span>
+    <span class="n">feature</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="s2">&quot;eng1000&quot;</span><span class="p">,</span>
+    <span class="n">n_train_stories</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="n">test_story</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;wheretheressmoke&quot;</span><span class="p">,</span>
+    <span class="n">n_repeats</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">ndelays</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">interpolation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;lanczos&quot;</span><span class="p">,</span>
+    <span class="n">ridge_implementation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;ridge_huth&quot;</span><span class="p">,</span>
+    <span class="n">do_shuffle</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">use_cache</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">keep_train_stories_in_mem</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">123</span><span class="p">,</span>
+    <span class="n">alphas</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+    <span class="n">nboots</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">chunklen</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span>
+    <span class="n">nchunks</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">125</span><span class="p">,</span>
+    <span class="n">singcutoff</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-10</span><span class="p">,</span>
+    <span class="n">single_alpha</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">use_corr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">run_folder_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Runs encoding models n_repeat times and saves results data/runs to disk.</span>
+
+<span class="sd">    The following outputs are saved:</span>
+<span class="sd">    0. params.json : the parameters for the run</span>
+<span class="sd">        `data/runs/date-id/params.json`</span>
+<span class="sd">    1. scores_mean.npy : the mean scores across folds</span>
+<span class="sd">        `data/runs/date-id/predictor/subject/n_training_stories/shuffle/scores_mean.npy`</span>
+<span class="sd">    2. scores.npy : the score for each separate fold</span>
+<span class="sd">        `data/runs/date-id/predictor/subject/n_training_stories/shuffle/fold/scores.npy`</span>
+<span class="sd">    3. weights.npy : the model weights for each separate fold</span>
+<span class="sd">        `data/runs/date-id/predictor/subject/n_training_stories/shuffle/fold/weights.npy`</span>
+<span class="sd">    4. best_alphas.npy : the best alphas for each voxel in that fold</span>
+<span class="sd">        `data/runs/date-id/predictor/subject/n_training_stories/shuffle/fold/best_alphas.npy`</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cross_validation : {&quot;loocv&quot;, &quot;simple&quot;}, default=&quot;simple&quot;</span>
+<span class="sd">        `loocv` uses leave-one-out cross-validation for n_stories. The stories are</span>
+<span class="sd">         determined by the order of the `stories` parameter or its default value in</span>
+<span class="sd">         `config.yaml`.</span>
+<span class="sd">        `simple` computes the regression for a train/test split containing n_stories</span>
+<span class="sd">         within each repeat.</span>
+<span class="sd">        Stories are sampled randomly for each repeat.</span>
+<span class="sd">    subject : str or list of str, default=&quot;UTS02&quot;</span>
+<span class="sd">        Subject identifier.</span>
+<span class="sd">        Can be one or a list of : {`&quot;all&quot;`, `&quot;UTS01&quot;`, `&quot;UTS02&quot;`, `&quot;UTS03&quot;`, `&quot;UTS04&quot;`,</span>
+<span class="sd">         `&quot;UTS05&quot;`, `&quot;UTS06&quot;`, `&quot;UTS07&quot;`, `&quot;UTS08&quot;`}</span>
+<span class="sd">    feature : {&quot;all&quot;, &quot;envelope&quot;, &quot;eng1000&quot;}, default=&quot;eng1000&quot;</span>
+<span class="sd">        Which predictor to run.</span>
+<span class="sd">        `all` will run separate encoding models for both predictors (default).</span>
+<span class="sd">        `envelope` will run the encoding model with the audio envelope as predictor.</span>
+<span class="sd">        `eng1000` will run the encoding model with the word embeddings of the stories</span>
+<span class="sd">         as predictor.</span>
+<span class="sd">    n_train_stories : int or list of int</span>
+<span class="sd">        Number o of training stories for the encoding model. If a list is given, the</span>
+<span class="sd">         encoding model will be fitted with each number separately.</span>
+<span class="sd">    test_story : str or None, default=&quot;wheretheressmoke&quot;</span>
+<span class="sd">        The story to use as the test set. If `None`, it will be sampled randomly.</span>
+<span class="sd">    ndelays : int, default=5</span>
+<span class="sd">        By how many TR&#39;s features are delayed to model the HRF. For `ndelays=5`, the</span>
+<span class="sd">         features of the predictor are shifted by one TR and concatinated to themselves</span>
+<span class="sd">         for five times.</span>
+<span class="sd">    interpolation : {&quot;lanczos&quot;, &quot;average&quot;}, default=&quot;lanczos&quot;</span>
+<span class="sd">        Whether to use lanczos interpolation or just average the words within a TR.</span>
+<span class="sd">        Only applies if `predictor=eng1000`.</span>
+<span class="sd">    ridge_implementation: {&quot;ridgeCV&quot;, &quot;ridge_huth&quot;}, default=&quot;ridge_huth&quot;</span>
+<span class="sd">        Which ridge regression implementation to use.</span>
+<span class="sd">        `ridgeCV` will use scikit-learn&#39;s RidgeCV.</span>
+<span class="sd">        `ridge_huth` will use the ridge regression implementation from Lebel et al.</span>
+<span class="sd">    do_shuffle: book, default=False</span>
+<span class="sd">        Whether or not to run model fits with predictors shuffled (as a control).</span>
+<span class="sd">        A separate subfolder (&#39;shuffled&#39;) will be created in the run folder with</span>
+<span class="sd">        these results.</span>
+<span class="sd">    use_cache: bool, default=True</span>
+<span class="sd">        Whether features are cached and reused.</span>
+<span class="sd">        Only applies if `predictor=envelope`.</span>
+<span class="sd">    keep_train_stories_in_mem: bool, default=True</span>
+<span class="sd">        Whether stories are kept in memory after first loading. Unless when using all</span>
+<span class="sd">        stories turning this off will reduce the memory footprint, but increase the</span>
+<span class="sd">        time is spent loading data. Only works if `cross_validation=&#39;simple&#39;`.</span>
+<span class="sd">    seed: int | None, default=123</span>
+<span class="sd">        Seed determining sampling of stories</span>
+<span class="sd">    alphas : np.ndarray</span>
+<span class="sd">        Array of alpha values to optimize over.</span>
+<span class="sd">    nboots : int</span>
+<span class="sd">        The number of bootstrap samples to run. 15 to 30 works well.</span>
+<span class="sd">        Only active for ridge_huth=&quot;ridge_huth&quot;.</span>
+<span class="sd">    chunklen : int</span>
+<span class="sd">        On each sample, the training data is broken into chunks of this length. This</span>
+<span class="sd">        should be a few times longer than your delay/STRF. e.g. for a STRF with 3</span>
+<span class="sd">        delays, I use chunks of length 10.</span>
+<span class="sd">        Only active for ridge_huth=&quot;ridge_huth&quot;.</span>
+<span class="sd">    nchunks : int</span>
+<span class="sd">        The number of training chunks held out to test ridge parameters for each</span>
+<span class="sd">        bootstrap sample. The product of nchunks and chunklen is the total number of</span>
+<span class="sd">        training samples held out for each sample, and this product should be about 20</span>
+<span class="sd">        percent of the total length of the training data.</span>
+<span class="sd">    singcutoff : float</span>
+<span class="sd">        The first step in ridge regression is computing the singular value decomposition</span>
+<span class="sd">        (SVD) of the stimulus Rstim. If Rstim is not full rank, some singular values</span>
+<span class="sd">        will be approximately equal to zero and the corresponding singular vectors will</span>
+<span class="sd">        be noise. These singular values/vectors should be removed both for speed (the</span>
+<span class="sd">        fewer multiplications the better!) and accuracy. Any singular values less than</span>
+<span class="sd">        singcutoff will be removed.</span>
+<span class="sd">        Only active for ridge_huth=&quot;ridge_huth&quot;.</span>
+<span class="sd">    single_alpha : boolean</span>
+<span class="sd">        Whether to use a single alpha for all responses. Good</span>
+<span class="sd">        foridentification/decoding.</span>
+<span class="sd">        Only active for ridge_huth=&quot;ridge_huth&quot;.</span>
+<span class="sd">    use_corr : boolean</span>
+<span class="sd">        If True, this function will use correlation as its metric of model fit. If</span>
+<span class="sd">        False, this function will instead use variance explained (R-squared) as its</span>
+<span class="sd">        metric of model fit. For ridge regression this can make a big difference --</span>
+<span class="sd">        highly regularized solutions will have very small norms and will thus explain</span>
+<span class="sd">        very little variance while still leading to high correlations, as correlation</span>
+<span class="sd">        is scale-free while R**2 is not.</span>
+<span class="sd">        Only active for ridge_huth=&quot;ridge_huth&quot;.</span>
+<span class="sd">    run_folder_name: str, optional</span>
+<span class="sd">        The name of the folder in the runs directory (as specificed in</span>
+<span class="sd">        `encoders.utils.load_config()[&#39;RUNS_DIR&#39;]`) to save the results in.</span>
+<span class="sd">        If it doesn&#39;t exist, it is created on the fly.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># put arguments in right format</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">subjects</span> <span class="o">=</span> <span class="p">[</span><span class="n">subject</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">subjects</span> <span class="o">=</span> <span class="n">subject</span>
+    <span class="k">if</span> <span class="s2">&quot;all&quot;</span> <span class="ow">in</span> <span class="n">subjects</span><span class="p">:</span>
+        <span class="n">subjects</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;UTS01&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;UTS02&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;UTS03&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;UTS04&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;UTS05&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;UTS06&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;UTS07&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;UTS08&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n_train_stories</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">n_train_stories_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">n_train_stories</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">n_train_stories_list</span> <span class="o">=</span> <span class="n">n_train_stories</span>
+
+    <span class="c1"># pick the right pool of stories, depending on ridge implementation</span>
+    <span class="k">if</span> <span class="n">ridge_implementation</span> <span class="o">==</span> <span class="s2">&quot;ridge_huth&quot;</span><span class="p">:</span>
+        <span class="n">stories</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">()[</span><span class="s2">&quot;STORIES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">ridge_implementation</span> <span class="o">==</span> <span class="s2">&quot;ridgeCV&quot;</span><span class="p">:</span>
+        <span class="n">stories</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">()[</span><span class="s2">&quot;STORIES_2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">stories</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Config parameter invalid: STORIES: </span><span class="si">{</span><span class="n">stories</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="n">feature</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="n">feature</span>
+    <span class="k">if</span> <span class="s2">&quot;all&quot;</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;envelope&quot;</span><span class="p">,</span> <span class="s2">&quot;eng1000&quot;</span><span class="p">]</span>
+
+    <span class="c1"># toggle the shuffle swithch</span>
+    <span class="n">shuffle_opts</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">do_shuffle</span><span class="p">:</span>
+        <span class="n">shuffle_opts</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+
+    <span class="c1"># if run folder name not given, create one</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">run_folder_name</span><span class="p">:</span>
+        <span class="n">run_folder_name</span> <span class="o">=</span> <span class="n">create_run_folder_name</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">run_folder_name</span> <span class="o">=</span> <span class="n">run_folder_name</span>
+
+    <span class="n">run_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">RUNS_DIR</span><span class="p">,</span> <span class="n">run_folder_name</span><span class="p">)</span>
+    <span class="n">Path</span><span class="p">(</span><span class="n">run_folder</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># log all parameters</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;cross_validation&quot;</span><span class="p">:</span> <span class="n">cross_validation</span><span class="p">,</span>
+        <span class="s2">&quot;subject_arg&quot;</span><span class="p">:</span> <span class="n">subject</span><span class="p">,</span>  <span class="c1"># command line arguments</span>
+        <span class="s2">&quot;subjects&quot;</span><span class="p">:</span> <span class="n">subjects</span><span class="p">,</span>  <span class="c1"># resolved predictors</span>
+        <span class="s2">&quot;feature_arg&quot;</span><span class="p">:</span> <span class="n">feature</span><span class="p">,</span>
+        <span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="n">features</span><span class="p">,</span>
+        <span class="s2">&quot;n_train_stories&quot;</span><span class="p">:</span> <span class="n">n_train_stories</span><span class="p">,</span>
+        <span class="s2">&quot;stories&quot;</span><span class="p">:</span> <span class="n">stories</span><span class="p">,</span>
+        <span class="s2">&quot;test_story&quot;</span><span class="p">:</span> <span class="n">test_story</span><span class="p">,</span>
+        <span class="s2">&quot;n_repeats&quot;</span><span class="p">:</span> <span class="n">n_repeats</span><span class="p">,</span>
+        <span class="s2">&quot;ndelays&quot;</span><span class="p">:</span> <span class="n">ndelays</span><span class="p">,</span>
+        <span class="s2">&quot;interpolation&quot;</span><span class="p">:</span> <span class="n">interpolation</span><span class="p">,</span>
+        <span class="s2">&quot;ridge_implementation&quot;</span><span class="p">:</span> <span class="n">ridge_implementation</span><span class="p">,</span>
+        <span class="s2">&quot;do_shuffle&quot;</span><span class="p">:</span> <span class="n">shuffle_opts</span><span class="p">,</span>
+        <span class="s2">&quot;use_cache&quot;</span><span class="p">:</span> <span class="n">use_cache</span><span class="p">,</span>
+        <span class="s2">&quot;keep_train_stories_in_mem&quot;</span><span class="p">:</span> <span class="n">keep_train_stories_in_mem</span><span class="p">,</span>
+        <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="n">seed</span><span class="p">,</span>
+        <span class="s2">&quot;tr_len&quot;</span><span class="p">:</span> <span class="n">TR_LEN</span><span class="p">,</span>
+        <span class="s2">&quot;alphas&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">alphas</span><span class="p">),</span>
+        <span class="s2">&quot;nboots&quot;</span><span class="p">:</span> <span class="n">nboots</span><span class="p">,</span>
+        <span class="s2">&quot;chunklen&quot;</span><span class="p">:</span> <span class="n">chunklen</span><span class="p">,</span>
+        <span class="s2">&quot;nchunks&quot;</span><span class="p">:</span> <span class="n">nchunks</span><span class="p">,</span>
+        <span class="s2">&quot;singcutoff&quot;</span><span class="p">:</span> <span class="n">singcutoff</span><span class="p">,</span>
+        <span class="s2">&quot;single_alpha&quot;</span><span class="p">:</span> <span class="n">single_alpha</span><span class="p">,</span>
+        <span class="s2">&quot;use_corr&quot;</span><span class="p">:</span> <span class="n">use_corr</span><span class="p">,</span>
+        <span class="s2">&quot;run_folder_name&quot;</span><span class="p">:</span> <span class="n">run_folder_name</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Running experiment with the following parameters:</span><span class="se">\n</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># update results file</span>
+    <span class="n">params_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">run_folder</span><span class="p">,</span> <span class="s2">&quot;params.json&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">params_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_out</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">f_out</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Written parameters to </span><span class="si">{</span><span class="n">params_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># aggregate overall max correlations and continously update in json</span>
+    <span class="n">results_max_agg</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="n">partial</span><span class="p">(</span><span class="n">defaultdict</span><span class="p">,</span> <span class="n">partial</span><span class="p">(</span><span class="n">defaultdict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)))</span>
+    <span class="c1"># enables instantiating hierarchy of dicts without manually creating them at each</span>
+    <span class="c1"># level.</span>
+
+    <span class="c1"># get a list of 3-element tuples, with all posible combinations</span>
+    <span class="n">combinations</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">product</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">subjects</span><span class="p">,</span> <span class="n">shuffle_opts</span><span class="p">))</span>
+
+    <span class="n">results_max_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">run_folder</span><span class="p">,</span> <span class="s2">&quot;results_max.json&quot;</span><span class="p">)</span>
+
+    <span class="c1"># run the regression pipeline</span>
+    <span class="k">for</span> <span class="n">combination_tuple</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">:</span>
+        <span class="n">current_feature</span><span class="p">,</span> <span class="n">current_subject</span><span class="p">,</span> <span class="n">shuffle</span> <span class="o">=</span> <span class="n">combination_tuple</span>
+
+        <span class="n">shuffle_str</span> <span class="o">=</span> <span class="s2">&quot;shuffled&quot;</span> <span class="k">if</span> <span class="n">shuffle</span> <span class="k">else</span> <span class="s2">&quot;not_shuffled&quot;</span>
+
+        <span class="c1"># just for UTS03, nans are not an issue</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">current_subject</span> <span class="o">==</span> <span class="s2">&quot;UTS03&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ridge_implementation</span> <span class="o">==</span> <span class="s2">&quot;ridgeCV&quot;</span><span class="p">):</span>
+            <span class="n">stories</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">()[</span><span class="s2">&quot;STORIES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="c1"># config is wrong for UTS03</span>
+
+        <span class="k">for</span> <span class="n">current_n_train_stories</span> <span class="ow">in</span> <span class="n">n_train_stories_list</span><span class="p">:</span>
+            <span class="n">output_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="n">run_folder</span><span class="p">,</span>
+                <span class="n">current_subject</span><span class="p">,</span>
+                <span class="n">current_feature</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">current_n_train_stories</span><span class="p">),</span>
+                <span class="n">shuffle_str</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">Path</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">cross_validation</span> <span class="o">==</span> <span class="s2">&quot;loocv&quot;</span><span class="p">:</span>
+                <span class="n">all_scores</span><span class="p">,</span> <span class="n">all_weights</span><span class="p">,</span> <span class="n">best_alphas</span> <span class="o">=</span> <span class="n">crossval_loocv</span><span class="p">(</span>
+                    <span class="n">feature</span><span class="o">=</span><span class="n">current_feature</span><span class="p">,</span>
+                    <span class="n">stories</span><span class="o">=</span><span class="n">stories</span><span class="p">,</span>
+                    <span class="n">n_train_stories</span><span class="o">=</span><span class="n">current_n_train_stories</span><span class="p">,</span>
+                    <span class="n">subject</span><span class="o">=</span><span class="n">current_subject</span><span class="p">,</span>
+                    <span class="n">tr_len</span><span class="o">=</span><span class="n">TR_LEN</span><span class="p">,</span>
+                    <span class="n">ndelays</span><span class="o">=</span><span class="n">ndelays</span><span class="p">,</span>
+                    <span class="n">interpolation</span><span class="o">=</span><span class="n">interpolation</span><span class="p">,</span>
+                    <span class="n">ridge_implementation</span><span class="o">=</span><span class="n">ridge_implementation</span><span class="p">,</span>
+                    <span class="n">use_cache</span><span class="o">=</span><span class="n">use_cache</span><span class="p">,</span>
+                    <span class="n">shuffle</span><span class="o">=</span><span class="n">shuffle</span><span class="p">,</span>
+                    <span class="n">alphas</span><span class="o">=</span><span class="n">alphas</span><span class="p">,</span>
+                    <span class="n">nboots</span><span class="o">=</span><span class="n">nboots</span><span class="p">,</span>
+                    <span class="n">chunklen</span><span class="o">=</span><span class="n">chunklen</span><span class="p">,</span>
+                    <span class="n">nchunks</span><span class="o">=</span><span class="n">nchunks</span><span class="p">,</span>
+                    <span class="n">singcutoff</span><span class="o">=</span><span class="n">singcutoff</span><span class="p">,</span>
+                    <span class="n">single_alpha</span><span class="o">=</span><span class="n">single_alpha</span><span class="p">,</span>
+                    <span class="n">use_corr</span><span class="o">=</span><span class="n">use_corr</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="n">cross_validation</span> <span class="o">==</span> <span class="s2">&quot;simple&quot;</span><span class="p">:</span>
+                <span class="n">all_scores</span><span class="p">,</span> <span class="n">all_weights</span><span class="p">,</span> <span class="n">best_alphas</span> <span class="o">=</span> <span class="n">crossval_simple</span><span class="p">(</span>
+                    <span class="n">feature</span><span class="o">=</span><span class="n">current_feature</span><span class="p">,</span>
+                    <span class="n">stories</span><span class="o">=</span><span class="n">stories</span><span class="p">,</span>
+                    <span class="n">n_train_stories</span><span class="o">=</span><span class="n">current_n_train_stories</span><span class="p">,</span>
+                    <span class="n">test_story</span><span class="o">=</span><span class="n">test_story</span><span class="p">,</span>
+                    <span class="n">subject</span><span class="o">=</span><span class="n">current_subject</span><span class="p">,</span>
+                    <span class="n">tr_len</span><span class="o">=</span><span class="n">TR_LEN</span><span class="p">,</span>
+                    <span class="n">ndelays</span><span class="o">=</span><span class="n">ndelays</span><span class="p">,</span>
+                    <span class="n">interpolation</span><span class="o">=</span><span class="n">interpolation</span><span class="p">,</span>
+                    <span class="n">ridge_implementation</span><span class="o">=</span><span class="n">ridge_implementation</span><span class="p">,</span>
+                    <span class="n">use_cache</span><span class="o">=</span><span class="n">use_cache</span><span class="p">,</span>
+                    <span class="n">shuffle</span><span class="o">=</span><span class="n">shuffle</span><span class="p">,</span>
+                    <span class="n">n_repeats</span><span class="o">=</span><span class="n">n_repeats</span><span class="p">,</span>
+                    <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+                    <span class="n">keep_train_stories_in_mem</span><span class="o">=</span><span class="n">keep_train_stories_in_mem</span><span class="p">,</span>
+                    <span class="n">alphas</span><span class="o">=</span><span class="n">alphas</span><span class="p">,</span>
+                    <span class="n">nboots</span><span class="o">=</span><span class="n">nboots</span><span class="p">,</span>
+                    <span class="n">chunklen</span><span class="o">=</span><span class="n">chunklen</span><span class="p">,</span>
+                    <span class="n">nchunks</span><span class="o">=</span><span class="n">nchunks</span><span class="p">,</span>
+                    <span class="n">singcutoff</span><span class="o">=</span><span class="n">singcutoff</span><span class="p">,</span>
+                    <span class="n">single_alpha</span><span class="o">=</span><span class="n">single_alpha</span><span class="p">,</span>
+                    <span class="n">use_corr</span><span class="o">=</span><span class="n">use_corr</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid cross validation method: </span><span class="si">{</span><span class="n">cross_validation</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="c1"># aggregate scores</span>
+            <span class="n">mean_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">all_scores</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">sem_scores</span> <span class="o">=</span> <span class="n">sem</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">repeat_scores</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">repeat_scores</span> <span class="ow">in</span> <span class="n">all_scores</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span>
+            <span class="p">)</span>
+
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Mean correlation (averages across splits) (r): </span><span class="si">{</span><span class="n">mean_scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Max  correlation (averaged across splits) (r): </span><span class="si">{</span><span class="n">mean_scores</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+            <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="s2">&quot;scores_mean.npy&quot;</span><span class="p">),</span> <span class="n">mean_scores</span><span class="p">)</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="s2">&quot;scores_sem.npy&quot;</span><span class="p">),</span> <span class="n">sem_scores</span><span class="p">)</span>
+
+            <span class="n">results_max_agg</span><span class="p">[</span><span class="n">current_feature</span><span class="p">][</span><span class="n">current_subject</span><span class="p">][</span><span class="n">current_n_train_stories</span><span class="p">][</span>
+                <span class="n">shuffle_str</span>
+            <span class="p">]</span> <span class="o">=</span> <span class="n">mean_scores</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+            <span class="c1"># update results file</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">results_max_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_out</span><span class="p">:</span>
+                <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">results_max_agg</span><span class="p">,</span> <span class="n">f_out</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking", "navigation.tabs", "navigation.path", "navigation.sections", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
