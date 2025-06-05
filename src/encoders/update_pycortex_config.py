@@ -23,8 +23,8 @@ def update_pycortex_config():
     pycortex_config = configparser.ConfigParser()
     pycortex_config.read([pycortex_config_path])
 
-    enc_config = config = load_config()
-    config["filestore"] = enc_config["DATA_DIR"]
+    enc_config = load_config()
+    pycortex_config["basic"]["filestore"] = enc_config["DATA_DIR"]
 
     # 3. save pycortex config
     with open(pycortex_config_path, "w") as f_out:

@@ -54,7 +54,13 @@ python src/encoders/download_data.py [-d DATA_DIR] --figures
 Without `-d DATA_DIR` the data will be downloaded into the folder `ds003020` of the project directory.
 To download the data into a custom dir, specify `-d DATA_DIR` (it is recommended to call the last folder `ds003020` as that is the default dataset name).
 
-5. Download correlation results
+5. Setup/check `config.yaml`. It should be created automatically by the download script, if not copy it from `config.example.yaml`. The important dir is the `DATA_DIR`.
+
+
+> [!NOTE]
+> If you get the error `ImportError: cannot import name 'getargspec' from 'inspect'` then try to update your datalad version `python -m pip install datalad --upgrade`
+
+6. Download correlation results
 
 Download [`runs.zip` file](https://osf.io/download/g9cy3) and unzip it such that you have a `runs` directory with the experiment folders as subdirectories:
 
@@ -65,7 +71,7 @@ runs/replication_ridgeCV
 runs/reproduction
 ```
 
-1. Install [inkscape](https://inkscape.org/) (required for plotting):
+7. Install [inkscape](https://inkscape.org/) (required for plotting):
 
 Open the `config.yaml` and set the following values accordingly.
 
@@ -76,12 +82,12 @@ INKSCAPE_VERSION: X.Y.Z
 
 For mac, you usually can [find inkscape as described here](https://stackoverflow.com/a/22085247).
 
-5. Configure pycortex (required for plotting):
+8. Configure pycortex (required for plotting):
 
 **Script**
 
 ```sh
-python src/encoders/update_pycortex_config
+python src/encoders/update_pycortex_config.py
 ```
 
 **Manual**
@@ -106,7 +112,7 @@ Modify the entry at `filestore` to `DATA_DIR/derivative/pycortex-db`.
 Whereas `DATA_DIR` is the directory of the Lebel et al. data repository.
 E.g. if you did not specify a custom datadir, `DATA_DIR` then it is `/path/to/this/repository/ds003020`.
 
-6. Reproduce the plots in the figures:
+9. Reproduce the plots in the figures:
 
 ```sh
 # will create plots for all figures
