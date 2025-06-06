@@ -10,7 +10,6 @@ from typing import List, Optional, Union
 import numpy as np
 import yaml
 
-ROOT = Path(__file__).parent.parent.parent
 FORMAT = "[%(levelname)s] %(name)s.%(funcName)s - %(message)s"
 
 logging.basicConfig(format=FORMAT)
@@ -40,7 +39,7 @@ log = get_logger(__name__)
 
 
 def load_config():
-    with open(ROOT / "config.yaml", "r") as f:
+    with open("config.yaml", "r") as f:
         config = yaml.safe_load(f)
 
     return config
