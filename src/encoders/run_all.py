@@ -273,7 +273,7 @@ def run_all(
             Path(output_dir).mkdir(parents=True, exist_ok=True)
 
             if cross_validation == "loocv":
-                all_scores, all_weights, best_alphas = crossval_loocv(
+                all_scores = crossval_loocv(
                     feature=current_feature,
                     stories=stories,
                     n_train_stories=current_n_train_stories,
@@ -293,7 +293,7 @@ def run_all(
                     use_corr=use_corr,
                 )
             elif cross_validation == "simple":
-                all_scores, all_weights, best_alphas = crossval_simple(
+                all_scores = crossval_simple(
                     feature=current_feature,
                     stories=stories,
                     n_train_stories=current_n_train_stories,
@@ -338,6 +338,9 @@ def run_all(
             results_max_agg[current_feature][current_subject][current_n_train_stories][
                 shuffle_str
             ] = mean_scores.max()
+
+            del mean_scores
+            del sem_scores
 
             # update results file
             with open(results_max_path, "w") as f_out:

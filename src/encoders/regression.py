@@ -293,7 +293,7 @@ def crossval_loocv(
     singcutoff: float,
     single_alpha: bool,
     use_corr: bool,
-) -> tuple[np.ndarray, list[np.ndarray], list[np.ndarray]]:
+) -> np.ndarray:
     # 1. choose stories
     # the order of stories is determined in config.yaml or via the argument.
     if stories is None:
@@ -319,10 +319,8 @@ def crossval_loocv(
 
     kf = KFold(n_splits=len(stories))
 
-    # result arrays
+    # result array
     scores_list = list()
-    weights_list = list()
-    best_alphas_list = list()
     for fold, (train_indices, test_indices) in enumerate(kf.split(stories)):
         log.info(f"Fold {fold}")
 
@@ -331,7 +329,7 @@ def crossval_loocv(
 
         log.info(f"{fold} | Running Regression")
         if ridge_implementation == "ridge_huth":
-            scores, weights, best_alphas = ridge_regression_huth(
+            scores, _, _ = ridge_regression_huth(
                 train_stories=curr_train_stories,
                 test_stories=curr_test_stories,
                 X_data_dict=X_data_dict,
@@ -346,7 +344,7 @@ def crossval_loocv(
                 use_corr=use_corr,
             )
         else:
-            scores, weights, best_alphas = ridge_regression(
+            scores, _, _ = ridge_regression(
                 train_stories=curr_train_stories,
                 test_stories=curr_test_stories,
                 X_data_dict=X_data_dict,
@@ -358,10 +356,8 @@ def crossval_loocv(
         log.info(f"{fold} | Max corr : {scores.max()}")
 
         scores_list.append(scores)
-        weights_list.append(weights)
-        best_alphas_list.append(best_alphas)
 
-    return np.array(scores_list), weights_list, best_alphas_list
+    return np.array(scores_list)
 
 
 def crossval_simple(
@@ -386,7 +382,7 @@ def crossval_simple(
     singcutoff: float,
     single_alpha: bool,
     use_corr: bool,
-) -> tuple[np.ndarray, list[np.ndarray], list[np.ndarray]]:
+) -> np.ndarray:
     """Run regression for n_repeats and return results.
 
     Parameters
@@ -466,10 +462,8 @@ def crossval_simple(
     # data dicts
     X_data_dict = dict()
     y_data_dict = dict()
-    # result arrays
+    # result array
     scores_list = list()
-    weights_list = list()
-    best_alphas_list = list()
     for repeat in range(n_repeats):
         log.info(f"Repeat {repeat}")
 
@@ -514,7 +508,7 @@ def crossval_simple(
             + f" | implementation: {ridge_implementation}"
         )
         if ridge_implementation == "ridge_huth":
-            scores, weights, best_alphas = ridge_regression_huth(
+            scores, _, _ = ridge_regression_huth(
                 train_stories=curr_train_stories,
                 test_stories=curr_test_stories,
                 X_data_dict=X_data_dict,
@@ -529,7 +523,7 @@ def crossval_simple(
                 use_corr=use_corr,
             )
         else:
-            scores, weights, best_alphas = ridge_regression(
+            scores, _, _ = ridge_regression(
                 train_stories=curr_train_stories,
                 test_stories=curr_test_stories,
                 X_data_dict=X_data_dict,
@@ -547,10 +541,8 @@ def crossval_simple(
 
         # 4. append results
         scores_list.append(scores)
-        weights_list.append(weights)
-        best_alphas_list.append(best_alphas)
 
-    return np.array(scores_list), weights_list, best_alphas_list
+    return np.array(scores_list)
 
 
 ######### Below is the original code from the Huth lab's implementation #########
