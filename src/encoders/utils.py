@@ -37,9 +37,12 @@ def get_logger(
 
 log = get_logger(__name__)
 
+ROOT_FOLDER = Path(__file__).parents[2]
+CONFIG_FILE = Path(ROOT_FOLDER, "config.yaml")
+
 
 def load_config():
-    with open("config.yaml", "r") as f:
+    with open(CONFIG_FILE, "r") as f:
         config = yaml.safe_load(f)
 
     return config
