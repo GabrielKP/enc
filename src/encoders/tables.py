@@ -16,7 +16,7 @@ gt_regression_params = GT(df_regression_params, rowname_col="Parameter").tab_stu
 )
 
 # rse table
-df_software_practices = pd.read_csv(PRACTICES_CSV)
+df_software_practices = pd.read_csv(PRACTICES_CSV, sep="\t")
 
 df_software_practices_styled = df_software_practices.copy()
 df_software_practices_styled["Readability"] = df_software_practices_styled[
