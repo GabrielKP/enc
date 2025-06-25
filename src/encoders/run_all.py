@@ -94,9 +94,10 @@ def run_all(
     interpolation : {"lanczos", "average"}, default="lanczos"
         Whether to use lanczos interpolation or just average the words within a TR.
         Only applies if `predictor=eng1000`.
-    ridge_implementation: {"ridgeCV", "ridge_huth"}, default="ridge_huth"
+    ridge_implementation: {"ridgeCV", "ridge_chunkbootstrap", "ridge_huth"}, default="ridge_huth"
         Which ridge regression implementation to use.
         `ridgeCV` will use scikit-learn's RidgeCV.
+        `ridge_chunkbootstrap` will use the chunked bootstrap method from Lebel et al. with scikit-learn's Ridge.
         `ridge_huth` will use the ridge regression implementation from Lebel et al.
     do_shuffle: book, default=False
         Whether or not to run model fits with predictors shuffled (as a control).
@@ -176,6 +177,8 @@ def run_all(
 
     # pick the right pool of stories, depending on ridge implementation
     if ridge_implementation == "ridge_huth":
+        stories = load_config()["STORIES"].copy()
+    elif ridge_implementation == "ridge_chunkbootstrap":
         stories = load_config()["STORIES"].copy()
     elif ridge_implementation == "ridgeCV":
         stories = load_config()["STORIES_2"].copy()
@@ -383,7 +386,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--ridge_implementation",
         type=str,
-        choices=["ridgeCV", "ridge_huth"],
+        choices=["ridgeCV", "ridge_chunkbootstrap", "ridge_huth"],
         default="ridge_huth",
     )
     parser.add_argument("--do_shuffle", action="store_true")
