@@ -8,7 +8,7 @@ from typing import Callable, Optional, Union, cast
 import cortex
 import numpy as np
 from matplotlib import pyplot as plt
-from sklearn.linear_model import RidgeCV
+from sklearn.linear_model import RidgeCV, Ridge
 from sklearn.model_selection import KFold
 
 from encoders.features import load_data_dict
@@ -193,6 +193,123 @@ def ridge_regression(
 
     return scores, clf.coef_, clf.alpha_
 
+def ridge_regression_chunkbootstrap(
+    train_stories: list[str],
+    test_stories: list[str],
+    X_data_dict: dict[str, np.ndarray],
+    y_data_dict: dict[str, np.ndarray],
+    score_fct: Callable[[np.ndarray, np.ndarray], np.ndarray],
+    alphas: Optional[np.ndarray] = np.logspace(1, 3, 10),
+    nboots: int = 50,
+    chunklen: int = 40,
+    nchunks: int = 125
+)  -> tuple[np.ndarray, np.ndarray, Union[float, np.ndarray]]:
+    """Runs Ridge regression with chunked bootstrapping on given train stories, returns
+    scores for test story, regression weights, and the best alphas.
+    The function uses the Huth lab's chunked bootstrapping approach to find the best alphas with ridge regression implemented by sklearn.
+
+    Parameters
+    ----------
+    train_stories: list of str
+        List of training stories. Stories must be in X_data_dict.
+    test_stories: list of str
+        List of testing stories. Stories must be in X_data_dict.
+    X_data_dict : dict[str, np.ndarray]
+        Dict with story to X_data (features) pairs.
+    y_data_dict : dict[str, np.ndarray]
+        Dict with story to y_data (fMRI data) pairs.
+    score_fct : fct(np.ndarray, np.ndarray) -> np.ndarray
+        A function taking y_test (shape = (number_trs, n_voxels))
+        and y_predict (same shape as y_test) and returning an
+        array with an entry for each voxel (shape = (n_voxels)).
+    alphas : np.ndarray or `None`, default = `np.logspace(1, 3, 10)`
+        Array of alpha values to optimize over. If `None`, will choose
+        default value.
+    nboots : int, default = 50
+        Number of bootstrap iterations.
+    chunklen : int, default = 40
+        Length of chunks when splitting the data into chunks for bootstrapping.
+    nchunks : int, default = 125
+        Number of chunks to be held out for alpha optimization; should not be more than 1/5 of the total number of chunks in training data.
+
+    Returns
+    -------
+    scores : np.ndarray
+        The prediction scores for the test stories.
+    weights : np.ndarray
+        The regression weights.
+    best_alphas : np.ndarray
+        The best alphas for each voxel.
+    """
+
+    if alphas is None:
+        alphas = np.logspace(1, 3, 10)
+
+    X_train_list = [X_data_dict[story] for story in train_stories]
+    y_train_list = [y_data_dict[story] for story in train_stories]
+    X_test_list = [X_data_dict[story] for story in test_stories]
+    y_test_list = [y_data_dict[story] for story in test_stories]
+
+    X_train_unnormalized = np.concatenate(X_train_list, axis=0)
+    y_train = np.concatenate(y_train_list, axis=0)
+    X_test_unnormalized = np.concatenate(X_test_list, axis=0)
+    y_test = np.concatenate(y_test_list, axis=0)
+
+    X_means = X_train_unnormalized.mean(axis=0)
+    X_stds = X_train_unnormalized.std(axis=0)
+
+    X_train = z_score(X_train_unnormalized, X_means, X_stds)
+    X_test = z_score(X_test_unnormalized, X_means, X_stds)
+
+    nchunks = min(nchunks, X_train.shape[0] // chunklen // 5)  # ensure that nchunks is not more than 1/5 of the total number of chunks
+
+    n_total_chunks = X_train.shape[0] // chunklen
+    X_train_chunked = X_train[:n_total_chunks * chunklen].reshape(n_total_chunks, chunklen, -1)
+    y_train_chunked = y_train[:n_total_chunks * chunklen].reshape(n_total_chunks, chunklen, -1)
+    
+    all_boot_scores = np.zeros((nboots, len(alphas), y_train.shape[1]))
+    
+    for iboot in range(nboots):
+        log.info(f"Bootstrap iteration {iboot + 1}/{nboots}")
+        
+        val_chunk_indices = np.random.choice(n_total_chunks, size=nchunks, replace=False)
+        train_chunk_indices = np.setdiff1d(np.arange(n_total_chunks), val_chunk_indices)
+        
+        X_train_boot = X_train_chunked[train_chunk_indices].reshape(-1, X_train.shape[1])
+        y_train_boot = y_train_chunked[train_chunk_indices].reshape(-1, y_train.shape[1])
+        
+        X_val_boot = X_train_chunked[val_chunk_indices].reshape(-1, X_train.shape[1])
+        y_val_boot = y_train_chunked[val_chunk_indices].reshape(-1, y_train.shape[1])
+
+        boot_scores = np.zeros((len(alphas), y_train.shape[1]))
+        
+        for ai, alpha in enumerate(alphas):
+            ridge = Ridge(alpha=alpha)
+            ridge.fit(X_train_boot, y_train_boot)
+            y_val_pred = ridge.predict(X_val_boot)
+            
+            boot_scores[ai, :] = score_fct(y_val_boot, y_val_pred)
+        
+        all_boot_scores[iboot] = boot_scores
+
+    mean_scores = np.mean(all_boot_scores, axis=0)
+    best_alpha_indices = np.argmax(mean_scores, axis=0)
+    best_alphas = alphas[best_alpha_indices]
+    
+    unique_alphas = np.unique(best_alphas)
+    weights = np.zeros((X_train.shape[1], y_train.shape[1]))
+    y_predict = np.zeros((X_test.shape[0], y_test.shape[1]))
+    
+    for alpha in unique_alphas:
+        voxel_mask = best_alphas == alpha
+        ridge = Ridge(alpha=alpha)
+        ridge.fit(X_train, y_train[:, voxel_mask])
+        weights[:, voxel_mask] = ridge.coef_.T
+        y_predict[:, voxel_mask] = ridge.predict(X_test)
+    
+    scores = score_fct(y_test, y_predict)
+
+    return scores, weights, best_alphas
 
 def ridge_regression_huth(
     train_stories: list[str],
@@ -342,6 +459,18 @@ def crossval_loocv(
                 singcutoff=singcutoff,
                 single_alpha=single_alpha,
                 use_corr=use_corr,
+            )
+        elif ridge_implementation == "ridge_chunkbootstrap":
+            scores, weights, best_alphas = ridge_regression_chunkbootstrap(
+                train_stories=curr_train_stories,
+                test_stories=curr_test_stories,
+                X_data_dict=X_data_dict,
+                y_data_dict=y_data_dict,
+                score_fct=pearsonr,  # type: ignore
+                alphas=alphas,
+                nboots=nboots,
+                chunklen=chunklen,
+                nchunks=nchunks,
             )
         else:
             scores, _, _ = ridge_regression(
@@ -521,6 +650,18 @@ def crossval_simple(
                 singcutoff=singcutoff,
                 single_alpha=single_alpha,
                 use_corr=use_corr,
+            )
+        elif ridge_implementation == "ridge_chunkbootstrap":
+            scores, weights, best_alphas = ridge_regression_chunkbootstrap(
+                train_stories=curr_train_stories,
+                test_stories=curr_test_stories,
+                X_data_dict=X_data_dict,
+                y_data_dict=y_data_dict,
+                score_fct=pearsonr,  # type: ignore
+                alphas=alphas,
+                nboots=nboots,
+                chunklen=chunklen,
+                nchunks=nchunks,
             )
         else:
             scores, _, _ = ridge_regression(
