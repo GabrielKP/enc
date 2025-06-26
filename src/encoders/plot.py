@@ -813,8 +813,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    cfg = load_config()
-
     if args.figure in ["figure1", "all"]:
         plot_figure1(
             reproduction_dir=args.reproduction,
