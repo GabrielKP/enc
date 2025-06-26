@@ -8,8 +8,6 @@ from typing import Dict, Mapping, Optional, Union
 
 import cortex
 import matplotlib as mpl
-
-mpl.use("Agg")
 import matplotlib.axes
 import matplotlib.figure
 import matplotlib.pyplot as plt
@@ -530,7 +528,8 @@ def save_fig_png_pdf(
 def plot_figure1(
     reproduction_dir: str,
     replication_ridgeCV_dir: str,
-    save_path: Optional[Union[str, Path]],
+    save_figures: bool,
+    save_path: Optional[Union[str, Path, None]],
 ):
     """Plot figure 1 plots"""
 
@@ -539,9 +538,11 @@ def plot_figure1(
     # setting the theme twice with seaborn makes it create
     # slightly different plots
 
-    if save_path is None:
+    if save_path is None and save_figures:
         save_path = Path("plots", "figure1")
-    check_make_dirs(save_path, isdir=True)
+
+    if save_figures:
+        check_make_dirs(save_path, isdir=True)
 
     console.print("\nFigure 1 - 'Main': Reproduction & replication", style="red bold")
     # REPRODUCTION: Training curve
@@ -560,11 +561,12 @@ def plot_figure1(
             ax=ax_reproduction,
         )
         plt.tight_layout()
-        save_fig_png_pdf(
-            fig_reproduction,
-            save_path=save_path,
-            filename="training_curve_reproduction",
-        )
+        if save_figures:
+            save_fig_png_pdf(
+                fig_reproduction,
+                save_path=save_path,
+                filename="training_curve_reproduction",
+            )
     else:
         log.warning(f"Cannot find reproduction dir: '{Path(reproduction_dir)}'")
 
@@ -585,11 +587,13 @@ def plot_figure1(
             ax=ax_replication_ridgeCV,
         )
         plt.tight_layout()
-        save_fig_png_pdf(
-            fig_replication_ridgeCV,
-            save_path=save_path,
-            filename="training_curve_replication_ridgeCV",
-        )
+
+        if save_figures:
+            save_fig_png_pdf(
+                fig_replication_ridgeCV,
+                save_path=save_path,
+                filename="training_curve_replication_ridgeCV",
+            )
     else:
         log.warning(f"Cannot find replication dir: '{Path(replication_ridgeCV_dir)}'")
 
@@ -609,11 +613,13 @@ def plot_figure1(
             with_colorbar=False,
             with_labels=False,
         )
-        save_fig_png_pdf(
-            fig_brain_reproduction,
-            save_path=save_path,
-            filename="reproduction_semantic_performance",
-        )
+
+        if save_figures:
+            save_fig_png_pdf(
+                fig_brain_reproduction,
+                save_path=save_path,
+                filename="reproduction_semantic_performance",
+            )
 
     # REPLICATION ridgeCV: brain fig
     if Path(replication_ridgeCV_dir).exists():
@@ -631,20 +637,32 @@ def plot_figure1(
             with_colorbar=False,
             with_labels=False,
         )
-        save_fig_png_pdf(
-            fig_brain_replication_ridgeCV,
-            save_path=save_path,
-            filename="replication_ridgeCV_semantic_performance",
-        )
+
+        if save_figures:
+            save_fig_png_pdf(
+                fig_brain_replication_ridgeCV,
+                save_path=save_path,
+                filename="replication_ridgeCV_semantic_performance",
+            )
 
     console.print("\n > Colorbar", style="yellow")
     fig_cbar, ax = plt.subplots(figsize=(6, 0.45))
     make_colorbar(ax)
-    save_fig_png_pdf(
-        fig=fig_cbar,
-        save_path=save_path,
-        filename="colorbar",
+    if save_figures:
+        save_fig_png_pdf(
+            fig=fig_cbar,
+            save_path=save_path,
+            filename="colorbar",
+        )
+
+    figures = (
+        fig_reproduction,
+        fig_replication_ridgeCV,
+        fig_brain_reproduction,
+        fig_brain_replication_ridgeCV,
+        fig_cbar,
     )
+    return figures
 
 
 def plot_figure2(
@@ -810,6 +828,9 @@ if __name__ == "__main__":
         default="all",
         help="Which figures to plot. Default 'all'",
     )
+
+    # load a static backend to not render figures in GUI windows
+    mpl.use("Agg")
 
     args = parser.parse_args()
 
