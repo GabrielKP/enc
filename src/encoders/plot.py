@@ -54,8 +54,8 @@ mpl.rcParams["xtick.labelsize"] = 14
 mpl.rcParams["ytick.labelsize"] = 14
 mpl.rcParams["axes.labelsize"] = 14
 mpl.rcParams["figure.labelsize"] = 14
-mpl.rcParams["font.family"] = "DeJavu Serif"
-mpl.rcParams["font.sans-serif"] = "Verdana"
+mpl.rcParams["font.family"] = "sans-serif"
+mpl.rcParams["font.sans-serif"] = ["Verdana", "DejaVu Sans"]
 
 
 def plot_voxel_performance(
@@ -113,7 +113,27 @@ def load_data(
     feature: str,
     curr_n_train_stories: int,
     shuffle: str,
-):
+) -> tuple[np.ndarray, np.ndarray]:
+    """Load data for given configuration.
+
+    Parameters
+    ----------
+    run_folder_name: str | Path
+        Path to the folder containing the data.
+    subject: str
+        Subject identifier
+    feature: str
+        Feature identifier
+    curr_n_train_stories: int
+        Number of training stories
+    shuffle: "shuffled" | "not_shuffled"
+        Shuffle identifier
+
+    Returns
+    -------
+    scores_mean: np.ndarray
+        Mean correlation scores
+    """
     base_path = Path(
         run_folder_name, subject, feature, str(curr_n_train_stories), shuffle
     )
@@ -130,7 +150,22 @@ def resolve_parameters(
     shuffles: Optional[Union[str, list[str]]] = None,
 ) -> tuple[list[str], list[str], list[int], list[str]]:
     """Takes any of subject/featres/n_train_stories/shuffles and returns parameters
-    that are not specified in run_folder_name."""
+    that are not specified in run_folder_name.
+
+    Parameters
+    ----------
+    run_folder_name: str | Path
+        Path to the folder containing the data.
+    subjects: str
+        Subject identifier
+    features: str
+        Feature identifier
+    curr_n_train_storiesß: int
+        Number of training stories
+    shuffles: "shuffled" | "not_shuffled"
+        Shuffle identifier
+
+    """
 
     # Handle 'missing' params
     if subjects is None:
@@ -193,8 +228,35 @@ def load_data_wrapper(
     Mapping[str, Mapping[str, Mapping[int, Mapping[str, np.ndarray]]]],
     Mapping[str, Mapping[str, Mapping[int, Mapping[str, np.ndarray]]]],
 ]:
-    """Load data for given configuration. Parameters not given will
-    be automatically 'discovered' in the path.
+    """Load data for given configuration and return it in nested dicts.
+
+    Will try to find arameters set to `None` by iterating over subfolders
+    in the `run_folder_name` directory.
+
+    Parameters
+    ----------
+    run_folder_name: str | Path
+        Path to the folder containing the data.
+    subjects: Optional[Union[str, list[str]]] = None,
+        Subject identifier(s) to load data for. If `None`, all subjects in the
+        `run_folder_name` directory will be loaded.
+    features: Optional[Union[str, list[str]]] = None,
+        Feature(s) to load data for. If `None`, all features in the
+        `run_folder_name` directory will be loaded.
+    n_train_stories: Optional[Union[int, list[int]]] = None,
+        Number of training stories to load data for. If `None`, all numbers in the
+        `run_folder_name` directory will be loaded.
+    shuffles: Optional[Union[str, list[str]]] = None,
+        Shuffle(s) to load data for. If `None`, all shuffles in the
+        `run_folder_name` directory will be loaded.
+
+    Returns
+    -------
+    rho_means: Mapping[str, Mapping[str, Mapping[int, Mapping[str, np.ndarray]]]]
+        Nested dictionary containing the mean correlation scores for each subject,
+        feature, number of training stories, and shuffle.
+    rho_sem: Mapping[str, Mapping[str, Mapping[int, Mapping[str, np.ndarray]]]]
+        Nested dictionary containing the standard error of the mean correlation scores.
     """
 
     subjects, features, n_train_stories, shuffles = resolve_parameters(
@@ -255,8 +317,37 @@ def load_data_wrapper_df(
     n_train_stories: Optional[Union[int, list[int]]] = None,
     shuffles: Optional[Union[str, list[str]]] = None,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Does the same as `load_data_wrapper` but returns two
-    dataframes in long format instead.
+    """Load data for given configuration and return it in a dataframe.
+
+    Will try to find arameters set to `None` by iterating over subfolders
+    in the `run_folder_name` directory.
+
+    Parameters
+    ----------
+    run_folder_name: str | Path
+        Path to the folder containing the data.
+    subjects: Optional[Union[str, list[str]]] = None,
+        Subject identifier(s) to load data for. If `None`, all subjects in the
+        `run_folder_name` directory will be loaded.
+    features: Optional[Union[str, list[str]]] = None,
+        Feature(s) to load data for. If `None`, all features in the
+        `run_folder_name` directory will be loaded.
+    n_train_stories: Optional[Union[int, list[int]]] = None,
+        Number of training stories to load data for. If `None`, all numbers in the
+        `run_folder_name` directory will be loaded.
+    shuffles: Optional[Union[str, list[str]]] = None,
+        Shuffle(s) to load data for. If `None`, all shuffles in the
+        `run_folder_name` directory will be loaded.
+
+    Returns
+    -------
+    rho_voxel_means_df: pd.DataFrame
+        Dataframe containing the mean correlation scores with columns
+        identifying subject, feature, number of training stories, and shuffle.
+    rho_sems_df: pd.DataFrame
+        Dataframe containing the standard error of the mean correlation scores with
+        columns identifying subject, feature, number of training stories, and
+        shuffle.
 
     """
     subjects, features, n_train_stories, shuffles = resolve_parameters(
@@ -334,6 +425,23 @@ def make_performance_plots(
     ax_titles: bool,
     **kwargs,
 ) -> matplotlib.figure.Figure:
+    """Plots multiple flatmaps of brain based on the scores_dict.
+
+    Parameters
+    ----------
+    scores_dict: dict
+        Dictionary containing the correlation scores for each number of training
+        stories.
+    subject: str
+        Subject identifier
+    ax_titles: bool
+        Whether to add titles to the axes
+
+    Returns
+    -------
+    fig: matplotlib.figure.Figure
+        Figure showing the brain performance
+    """
     n_n_train_stories = len(scores_dict)
 
     fig, ax = plt.subplots(
@@ -372,6 +480,32 @@ def make_brain_fig(
     ax_titles: bool = True,
     **kwargs,
 ) -> matplotlib.figure.Figure:
+    """Plots multiple flatmaps of brain based on data configuration.
+
+    Parameters
+    ----------
+    run_folder_name: str | Path
+        Path to the folder containing the data.
+    subject: str
+        Subject identifier
+    feature: str
+        Feature identifier
+    n_train_stories: list[int]
+        Number of training stories
+    shuffle: str, default="not_shuffled"
+        Shuffle identifier
+    ax_titles: bool, default=True
+        Whether to add titles to the axes
+    with_colorbar: bool, default=True
+        Whether to add a colorbar to the figure
+    with_labels: bool, default=True
+        Whether to add labels to the figure
+
+    Returns
+    -------
+    fig: matplotlib.figure.Figure
+        Figure showing the brain performance
+    """
     # load data
     rho_means, _ = load_data_wrapper(
         run_folder_name=run_folder_name,
@@ -405,6 +539,25 @@ def make_colorbar(
     vmax: float = 0.5,
     cmap: str = "inferno",
 ) -> matplotlib.axes.Axes:
+    """Creates a colorbar on matplotlib axis.
+
+    Parameters
+    ----------
+    ax: matplotlib.axes.Axes
+        Axis to add the colorbar to
+    vmin: float, default=0
+        Minimum value for the colorbar
+    vmax: float, default=0.5
+        Maximum value for the colorbar
+    cmap: str, default="inferno"
+        Colormap to use
+
+    Returns
+    -------
+    ax: matplotlib.axes.Axes
+        Axis with the colorbar
+    """
+
     # Create a horizontal colorbar
     norm = mpl.colors.Normalize(vmin=vmin, vmax=vmax)  # type: ignore
     cbar = mpl.colorbar.ColorbarBase(  # type: ignore
@@ -509,8 +662,23 @@ def save_fig_png_pdf(
     fig: matplotlib.figure.Figure,
     save_path: Union[str, Path],
     filename: str,
-):
-    """Saves figure to pdf and png"""
+) -> None:
+    """Saves figure to pdf and png
+
+    Parameters
+    ----------
+    fig : matplotlib.figure.Figure
+        The figure to save
+    save_path : Union[str, Path]
+        Directory path where to save the figure
+    filename : str
+        Base filename (without extension) for the saved figure
+
+    Returns
+    -------
+    None
+        Saves the figure as PDF, PNG, and SVG files to disk.
+    """
     fn = str(Path(save_path, f"{filename}.pdf"))
     log.info(f"Saving {fn}")
     fig.savefig(fn, bbox_inches="tight", transparent=True)
@@ -528,17 +696,44 @@ def save_fig_png_pdf(
 def plot_figure1(
     reproduction_dir: str,
     replication_ridgeCV_dir: str,
-    save_figures: bool,
     save_path: Optional[Union[str, Path, None]],
-):
-    """Plot figure 1 plots"""
+    save_figures: bool = False,
+) -> tuple:
+    """Plot figure 1 plots
+
+    Parameters
+    ----------
+    reproduction_dir : str
+        Directory for reproduction experiment in the format:
+        `subject/feature/n_training_stories/shuffle/scores_[mean/sem].npy`
+    replication_ridgeCV_dir : str
+        Directory for ridgeCV experiment in the format:
+        `subject/feature/n_training_stories/shuffle/scores_[mean/sem].npy`
+    save_path : str | None
+        Directory to which figures will be saved.
+    save_figures : bool, default=False
+        Whether to save figures to disk.
+
+    Returns
+    -------
+    (fig_reproduction, fig_replication_ridgeCV, fig_brain_reproduction,
+     fig_brain_replication_ridgeCV, fig_cbar) : tuple
+        A tuple containing five matplotlib figures:
+        - fig_reproduction: Figure showing training curve for reproduction experiment
+        - fig_replication_ridgeCV: Figure showing training curve for ridgeCV replication
+        - fig_brain_reproduction: Figure showing brain performance for reproduction
+        - fig_brain_replication_ridgeCV: Figure showing brain performance for ridgeCV
+          replication
+        - fig_cbar: Figure showing colorbar
+        Figures may be None if the data directory was not found.
+    """
 
     subject = "UTS02"
     figsize = (6, 4)
     # setting the theme twice with seaborn makes it create
     # slightly different plots
 
-    if save_path is None and save_figures:
+    if save_path is None:
         save_path = Path("plots", "figure1")
 
     if save_figures:
@@ -568,6 +763,7 @@ def plot_figure1(
                 filename="training_curve_reproduction",
             )
     else:
+        fig_reproduction = None
         log.warning(f"Cannot find reproduction dir: '{Path(reproduction_dir)}'")
 
     # REPLICATION ridgeCV: Training curve
@@ -595,6 +791,7 @@ def plot_figure1(
                 filename="training_curve_replication_ridgeCV",
             )
     else:
+        fig_replication_ridgeCV = None
         log.warning(f"Cannot find replication dir: '{Path(replication_ridgeCV_dir)}'")
 
     # REPRODUCTION: Brain fig
@@ -620,6 +817,8 @@ def plot_figure1(
                 save_path=save_path,
                 filename="reproduction_semantic_performance",
             )
+    else:
+        fig_brain_reproduction = None
 
     # REPLICATION ridgeCV: brain fig
     if Path(replication_ridgeCV_dir).exists():
@@ -644,6 +843,8 @@ def plot_figure1(
                 save_path=save_path,
                 filename="replication_ridgeCV_semantic_performance",
             )
+    else:
+        fig_brain_replication_ridgeCV = None
 
     console.print("\n > Colorbar", style="yellow")
     fig_cbar, ax = plt.subplots(figsize=(6, 0.45))
@@ -667,10 +868,36 @@ def plot_figure1(
 
 def plot_figure2(
     replication_ridgeCV_dir: str,
+    replication_bootstrap_dir: str,
     replication_ridge_huth_dir: str,
     save_path: Optional[Union[str, Path]],
-):
-    """Plot figure 2 plots"""
+    save_figures: bool = False,
+) -> tuple:
+    """Plot figure 2 plots
+
+    Parameters
+    ----------
+    replication_ridgeCV_dir : str
+        Directory for ridgeCV experiment in the format:
+        `subject/feature/n_training_stories/shuffle/scores_[mean/sem].npy`
+    replication_ridge_huth_dir : str
+        Directory for ridge_huth experiment.
+    replication_bootstrap_dir : str
+        Directory for bootstrap experiment.
+    save_path : str | None
+        Directory to which figures will be saved.
+    save_figures : bool, default=False
+        Whether to save figures to disk.
+
+    Returns
+    -------
+    (fig2_ridgeCV, fig2_ridgeCV_bootstrap, fig2_ridge_huth) : tuple
+        A tuple containing three matplotlib figures:
+        - fig2_ridgeCV: Figure showing training curve for ridgeCV implementation
+        - fig2_ridgeCV_bootstrap: Figure showing training curve for ridge_chunkbootstrap
+          implementation
+        - fig2_ridge_huth: Figure showing training curve for ridge_huth implementation
+    """
 
     figsize = (5, 4)
 
@@ -683,54 +910,104 @@ def plot_figure2(
 
     # ridgeCV: Training curve
     console.print("\n > Training curve - ridgeCV", style="yellow")
-    fig3_ridgeCV, ax3_ridgeCV = plt.subplots(figsize=figsize)
+    fig2_ridgeCV, ax2_ridgeCV = plt.subplots(figsize=figsize)
     make_training_curve_fig(
         run_folder_name=replication_ridgeCV_dir,
         feature="eng1000",
         subjects=None,
         n_train_stories=None,
         shuffle="not_shuffled",
-        ax=ax3_ridgeCV,
+        ax=ax2_ridgeCV,
         plot_config=plot_config,
     )
     plt.tight_layout()
-    save_fig_png_pdf(
-        fig3_ridgeCV,
-        save_path=save_path,
-        filename="training_curve_ridgeCV",
+    if save_figures:
+        save_fig_png_pdf(
+            fig2_ridgeCV,
+            save_path=save_path,
+            filename="training_curve_ridgeCV",
+        )
+
+    # ridgeCV_bootstrap: Training curve
+    console.print("\n > Training curve - ridgeCV_bootstrap", style="yellow")
+    fig2_ridgeCV_bootstrap, ax2_ridgeCV_bootstrap = plt.subplots(figsize=figsize)
+    make_training_curve_fig(
+        run_folder_name=replication_bootstrap_dir,
+        feature="eng1000",
+        subjects=None,
+        n_train_stories=None,
+        shuffle="not_shuffled",
+        ax=ax2_ridgeCV_bootstrap,
+        plot_config=plot_config,
     )
+    plt.tight_layout()
+    if save_figures:
+        save_fig_png_pdf(
+            fig2_ridgeCV_bootstrap,
+            save_path=save_path,
+            filename="training_curve_ridgeCV_bootstrap",
+        )
 
     # ridge_huth: Training curve
     console.print("\n > Training curve - ridge_huth", style="yellow")
-    fig3_ridge_huth, ax3_ridge_huth = plt.subplots(figsize=figsize)
+    fig2_ridge_huth, ax2_ridge_huth = plt.subplots(figsize=figsize)
     make_training_curve_fig(
         run_folder_name=replication_ridge_huth_dir,
         feature="eng1000",
         subjects=None,
         n_train_stories=None,
         shuffle="not_shuffled",
-        ax=ax3_ridge_huth,
+        ax=ax2_ridge_huth,
         plot_config=plot_config,
     )
     plt.tight_layout()
-    save_fig_png_pdf(
-        fig3_ridge_huth,
-        save_path=save_path,
-        filename="training_curve_ridge_huth",
-    )
+    if save_figures:
+        save_fig_png_pdf(
+            fig2_ridge_huth,
+            save_path=save_path,
+            filename="training_curve_ridge_huth",
+        )
+
+    return (fig2_ridgeCV, fig2_ridgeCV_bootstrap, fig2_ridge_huth)
 
 
 def plot_figure3(
     extension_ridgeCV_dir: str,
     save_path: Optional[Union[str, Path]] = None,
-):
+    save_figures: bool = False,
+) -> tuple:
+    """Plot figure 3 plots for the extension experiment.
+
+    Creates and saves training curve, brain figure, and colorbar for the audio
+    envelope extension experiment.
+
+    Parameters
+    ----------
+    extension_ridgeCV_dir : str
+        Directory for extension experiment in the format:
+        `subject/feature/n_training_stories/shuffle/scores_[mean/sem].npy`
+    save_path : str | None
+        Directory to which figures will be saved.
+    save_figures : bool, default=False
+        Whether to save figures to disk.
+
+    Returns
+    -------
+    (fig4_extension_curve, fig4_extension_brain, fig_cbar) : tuple
+        A tuple containing three matplotlib figures:
+        - fig4_extension_curve: Figure showing training curve for extension experiment
+        - fig4_extension_brain: Figure showing brain performance for extension
+          experiment.
+        - fig_cbar: Figure showing colorbar
+    """
     console.print("\nFigure 3 - 'Extension': Audio envelope", style="red bold")
     subject = "UTS02"
     figsize = (5, 4)
 
     if save_path is None:
         save_path = Path("plots", "figure3")
-    check_make_dirs(save_path, isdir=True)
+    if save_figures:
+        check_make_dirs(save_path, isdir=True)
 
     console.print("\n > Training curve - ridge_huth:", style="yellow")
     fig4_extension_curve, ax4_extension_curve = plt.subplots(figsize=figsize)
@@ -753,11 +1030,12 @@ def plot_figure3(
         ),
     )
     plt.tight_layout()
-    save_fig_png_pdf(
-        fig4_extension_curve,
-        save_path=save_path,
-        filename="training_curve_extension_ridgeCV",
-    )
+    if save_figures:
+        save_fig_png_pdf(
+            fig4_extension_curve,
+            save_path=save_path,
+            filename="training_curve_extension_ridgeCV",
+        )
 
     console.print("\n > Brain fig - ridge_huth", style="yellow")
     fig4_extension_brain = make_brain_fig(
@@ -770,21 +1048,24 @@ def plot_figure3(
         with_colorbar=False,
         with_labels=False,
     )
-    save_fig_png_pdf(
-        fig4_extension_brain,
-        save_path=save_path,
-        filename="semantic_performance_extension_ridgeCV",
-    )
+    if save_figures:
+        save_fig_png_pdf(
+            fig4_extension_brain,
+            save_path=save_path,
+            filename="semantic_performance_extension_ridgeCV",
+        )
 
     fig_cbar, ax = plt.subplots(figsize=(6, 0.45))
     make_colorbar(ax)
 
     console.print("\n > Colorbar", style="yellow")
-    save_fig_png_pdf(
-        fig=fig_cbar,
-        save_path=save_path,
-        filename="colorbar",
-    )
+    if save_figures:
+        save_fig_png_pdf(
+            fig=fig_cbar,
+            save_path=save_path,
+            filename="colorbar",
+        )
+    return (fig4_extension_curve, fig4_extension_brain, fig_cbar)
 
 
 if __name__ == "__main__":
@@ -796,25 +1077,31 @@ if __name__ == "__main__":
         "--reproduction",
         type=str,
         default="runs/reproduction",
-        help="folder with correlation results for the reproduction experiment",
+        help="dir with correlation results for the reproduction experiment",
     )
     parser.add_argument(
         "--replication_ridgeCV",
         type=str,
         default="runs/replication_ridgeCV",
-        help="folder with correlation result for the replication experiment ",
+        help="dir with correlation results for the ridgeCV replication experiment ",
+    )
+    parser.add_argument(
+        "--replication_bootstrap",
+        type=str,
+        default="runs/replication_bootstrap",
+        help="dir with correlation results for the bootstrap replication experiment ",
     )
     parser.add_argument(
         "--replication_ridge_huth",
         type=str,
         default="runs/replication_ridge_huth",
-        help="folder with correlation result for the replication experiment",
+        help="dir with correlation results for the ridge_huth replication experiment",
     )
     parser.add_argument(
         "--extension_ridgeCV",
         type=str,
         default="runs/extension_ridgeCV",
-        help="folder with correlation result for the extension experiment",
+        help="dir with correlation results for the extension experiment",
     )
     parser.add_argument(
         "--save_path",
@@ -839,15 +1126,19 @@ if __name__ == "__main__":
             reproduction_dir=args.reproduction,
             replication_ridgeCV_dir=args.replication_ridgeCV,
             save_path=args.save_path,
+            save_figures=True,
         )
     if args.figure in ["figure2", "all"]:
         plot_figure2(
             replication_ridgeCV_dir=args.replication_ridgeCV,
+            replication_bootstrap_dir=args.replication_bootstrap,
             replication_ridge_huth_dir=args.replication_ridge_huth,
             save_path=args.save_path,
+            save_figures=True,
         )
     if args.figure in ["figure3", "all"]:
         plot_figure3(
             extension_ridgeCV_dir=args.extension_ridgeCV,
             save_path=args.save_path,
+            save_figures=True,
         )
