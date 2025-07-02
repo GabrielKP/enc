@@ -8,7 +8,15 @@ from test_data_regression import (
     train_test_split,
 )
 
-from encoders.regression import pearsonr, pearsonr_scorer, ridge_regression, z_score, zs
+from encoders.regression import (
+    pearsonr,
+    pearsonr_scorer,
+    ridge_regression,
+    ridge_regression_chunkbootstrap,
+    ridge_regression_huth,
+    z_score,
+    zs,
+)
 
 # ruff: noqa: F811 - pytest fixtures are injected by name
 
@@ -109,6 +117,63 @@ def test_ridge_regression_basic(regression_test_data, train_test_split):
 
     assert scores.shape == (3,)
     assert weights.shape == (3, 5)
+    assert best_alphas.shape == (3,)
+
+
+def test_ridge_regression_huth_basic(small_regression_data):
+    """Test basic functionality of ridge_regression_huth."""
+    X_data_dict = small_regression_data["X_data_dict"]
+    y_data_dict = small_regression_data["y_data_dict"]
+
+    scores, weights, best_alphas = ridge_regression_huth(
+        train_stories=["train"],
+        test_stories=["test"],
+        X_data_dict=X_data_dict,
+        y_data_dict=y_data_dict,
+        score_fct=pearsonr,
+        alphas=np.array([1.0, 10.0]),
+        nboots=2,
+        chunklen=5,
+        nchunks=2,
+        singcutoff=1e-10,
+        single_alpha=False,
+        use_corr=True,
+    )
+
+    assert isinstance(scores, np.ndarray)
+    assert isinstance(weights, np.ndarray)
+    assert isinstance(best_alphas, np.ndarray)
+
+    assert scores.shape == (2,)
+    assert weights.shape == (3, 2)
+    assert best_alphas.shape == (2,)
+
+
+def test_ridge_regression_chunkbootstrap_basic(regression_test_data, train_test_split):
+    """Test basic functionality of ridge_regression_chunkbootstrap."""
+    X_data_dict = regression_test_data["X_data_dict"]
+    y_data_dict = regression_test_data["y_data_dict"]
+    train_stories = train_test_split["train_stories"]
+    test_stories = train_test_split["test_stories"]
+
+    scores, weights, best_alphas = ridge_regression_chunkbootstrap(
+        train_stories=train_stories,
+        test_stories=test_stories,
+        X_data_dict=X_data_dict,
+        y_data_dict=y_data_dict,
+        score_fct=pearsonr,
+        alphas=np.array([1.0, 10.0]),
+        nboots=2,
+        chunklen=10,
+        nchunks=5,
+    )
+
+    assert isinstance(scores, np.ndarray)
+    assert isinstance(weights, np.ndarray)
+    assert isinstance(best_alphas, np.ndarray)
+
+    assert scores.shape == (3,)
+    assert weights.shape == (5, 3)
     assert best_alphas.shape == (3,)
 
 
