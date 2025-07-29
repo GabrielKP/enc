@@ -25,9 +25,9 @@ def update_pycortex_config():
     pycortex_config.read([pycortex_config_path])
 
     enc_config = load_config()
-    pycortex_config["basic"]["filestore"] = (
-        str(Path(enc_config["DATA_DIR"])) + "/derivative/pycortex-db"
-    )
+    filestore_fullpath = str(Path(enc_config["DATA_DIR"])) + "/derivative/pycortex-db"
+    pycortex_config["basic"]["filestore"] = filestore_fullpath
+    log.info(f"`filestore` set to: {filestore_fullpath}")
     # 3. save pycortex config
     with open(pycortex_config_path, "w") as f_out:
         pycortex_config.write(f_out)

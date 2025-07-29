@@ -94,10 +94,13 @@ def run_all(
     interpolation : {"lanczos", "average"}, default="lanczos"
         Whether to use lanczos interpolation or just average the words within a TR.
         Only applies if `predictor=eng1000`.
-    ridge_implementation: {"ridgeCV", "ridge_huth"}, default="ridge_huth"
+    ridge_implementation: {"ridgeCV", "ridge_chunkbootstrap", "ridge_huth"},
+        default="ridge_huth"
         Which ridge regression implementation to use.
         `ridgeCV` will use scikit-learn's RidgeCV.
-        `ridge_huth` will use the ridge regression implementation from Lebel et al.
+        `ridge_chunkbootstrap` will use the chunked bootstrap method from Lebel et al.
+        with scikit-learn's Ridge. `ridge_huth` will use the ridge regression
+        implementation from Lebel et al.
     do_shuffle: book, default=False
         Whether or not to run model fits with predictors shuffled (as a control).
         A separate subfolder ('shuffled') will be created in the run folder with
@@ -177,7 +180,7 @@ def run_all(
     # pick the right pool of stories, depending on ridge implementation
     if ridge_implementation == "ridge_huth":
         stories = load_config()["STORIES"].copy()
-    elif ridge_implementation == "ridgeCV":
+    elif ridge_implementation in ["ridgeCV", "ridge_chunkbootstrap"]:
         stories = load_config()["STORIES_2"].copy()
 
     if not isinstance(stories, list):
@@ -273,7 +276,7 @@ def run_all(
             Path(output_dir).mkdir(parents=True, exist_ok=True)
 
             if cross_validation == "loocv":
-                all_scores, all_weights, best_alphas = crossval_loocv(
+                all_scores = crossval_loocv(
                     feature=current_feature,
                     stories=stories,
                     n_train_stories=current_n_train_stories,
@@ -293,7 +296,7 @@ def run_all(
                     use_corr=use_corr,
                 )
             elif cross_validation == "simple":
-                all_scores, all_weights, best_alphas = crossval_simple(
+                all_scores = crossval_simple(
                     feature=current_feature,
                     stories=stories,
                     n_train_stories=current_n_train_stories,
@@ -339,6 +342,9 @@ def run_all(
                 shuffle_str
             ] = mean_scores.max()
 
+            del mean_scores
+            del sem_scores
+
             # update results file
             with open(results_max_path, "w") as f_out:
                 json.dump(results_max_agg, f_out, indent=4)
@@ -383,7 +389,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--ridge_implementation",
         type=str,
-        choices=["ridgeCV", "ridge_huth"],
+        choices=["ridgeCV", "ridge_chunkbootstrap", "ridge_huth"],
         default="ridge_huth",
     )
     parser.add_argument("--do_shuffle", action="store_true")
