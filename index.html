@@ -1,0 +1,1193 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Kristijan">
+      
+      
+        <link rel="canonical" href="https://gabrielkp.com/enc/">
+      
+      
+      
+        <link rel="next" href="run_all/">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>The Encoders</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reproducing-the-published-figures" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="The Encoders" class="md-header__button md-logo" aria-label="The Encoders" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The Encoders
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/GabrielKP/enc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="https://kristijanarmeni.github.io/encoders_report" target="_blank" class="md-tabs__link">
+          
+  
+  
+  Report
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="run_all/" class="md-tabs__link">
+          
+  
+  
+  Documentation
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="The Encoders" class="md-nav__button md-logo" aria-label="The Encoders" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    The Encoders
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/GabrielKP/enc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reproducing-the-published-figures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reproducing the published figures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reproducing the published figures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-clone-repository-navigate-into-created-repository-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Clone repository, navigate into created repository directory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-setup-a-virtual-environment-and-install-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Setup a virtual environment and install dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-install-git-annex-and-datalad-required-to-download-data-from-lebel-et-al-2023" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Install git-annex and datalad (required to download data from Lebel et al. 2023)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-download-the-subject-specific-cortical-surface-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Download the subject-specific cortical surface data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-setupcheck-configyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Setup/check config.yaml.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-download-the-pre-computed-experiment-results-model-performance-scores" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Download the pre-computed experiment results (model performance scores)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-install-inkscape-required-for-plotting" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Install inkscape (required for plotting):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-configure-pycortex-required-for-plotting" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Configure pycortex (required for plotting):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-run-the-script-that-plots-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Run the script that plots the data:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reproduce-correlation-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reproduce correlation results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#team" class="md-nav__link">
+    <span class="md-ellipsis">
+      Team
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      License
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Report
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Report
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://kristijanarmeni.github.io/encoders_report" target="_blank" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Intro
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Documentation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="run_all/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    run_all
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="regression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    regression
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    features
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="download_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    download_data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    utils
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reproducing-the-published-figures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reproducing the published figures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reproducing the published figures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-clone-repository-navigate-into-created-repository-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Clone repository, navigate into created repository directory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-setup-a-virtual-environment-and-install-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Setup a virtual environment and install dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-install-git-annex-and-datalad-required-to-download-data-from-lebel-et-al-2023" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Install git-annex and datalad (required to download data from Lebel et al. 2023)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-download-the-subject-specific-cortical-surface-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Download the subject-specific cortical surface data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-setupcheck-configyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Setup/check config.yaml.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-download-the-pre-computed-experiment-results-model-performance-scores" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Download the pre-computed experiment results (model performance scores)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-install-inkscape-required-for-plotting" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Install inkscape (required for plotting):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-configure-pycortex-required-for-plotting" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Configure pycortex (required for plotting):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-run-the-script-that-plots-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Run the script that plots the data:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reproduce-correlation-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reproduce correlation results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#team" class="md-nav__link">
+    <span class="md-ellipsis">
+      Team
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      License
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 align="center">Encoding Models</h1>
+
+<p align="center">A project reproducing & replicating endocing models published by <a href="https://github.com/HuthLab/deep-fMRI-dataset"><i>LeBel et al. 2023</i></a>.</p>
+<p align="center">We documented our results in this <a href="https://kristijanarmeni.github.io/encoders_report/"><i>Report</i></a>.</p>
+
+<p align="center">
+<a href="https://www.python.org/"><img alt="code" src="https://img.shields.io/badge/code-Python-blue?logo=Python"></a>
+<a href="https://gabrielkp.com/enc/"><img alt="documentation" src="https://img.shields.io/badge/docs-MkDocs-708FCC.svg?style=flat"></a>
+<a href="https://kristijanarmeni.github.io/encoders_report/"><img alt="documentation" src="https://img.shields.io/badge/Report-MystMD-white?logo=Markdown"></a>
+<a href="https://scikit-learn.org/stable/"><img alt="ML framework" src="https://img.shields.io/badge/ML-Scikit%20Learn-orange?logo=Scikit-learn"></a>
+<a href="https://docs.astral.sh/ruff/"><img alt="Code style: Ruff" src="https://img.shields.io/badge/code%20style-Ruff-green?logo=Ruff"></a>
+<a href="https://python-poetry.org/"><img alt="packaging framwork: Poetry" src="https://img.shields.io/badge/packaging-Poetry-lightblue?logo=Poetry"></a>
+<a href="https://pre-commit.com/"><img alt="tool: pre-commit" src="https://img.shields.io/badge/tool-Pre%20Commit-yellow?logo=Pre-Commit"></a>
+</p>
+
+<hr />
+<h2 id="reproducing-the-published-figures">Reproducing the published figures</h2>
+<p>This guide shows how to reproduce the figures from the precomputed model performance scores from all experiments (model-brain correlations) using the provided code.
+It requires the installation of the relevant dependencies and the correlation results of various encoding model runs.</p>
+<h4 id="1-clone-repository-navigate-into-created-repository-directory">1. Clone repository, navigate into created repository directory</h4>
+<pre><code class="language-sh">git clone git@github.com:GabrielKP/enc.git
+cd enc
+</code></pre>
+<h4 id="2-setup-a-virtual-environment-and-install-dependencies">2. Setup a virtual environment and install dependencies</h4>
+<p>Next, create a virtual environment with Python 3.12 using your preferred manager.</p>
+<p>For example, using conda:</p>
+<pre><code class="language-sh"># conda environment
+conda create -n enc python=3.12
+conda activate enc
+</code></pre>
+<p>Or using <a href="https://docs.astral.sh/uv/">uv</a> (in project root directory):</p>
+<pre><code class="language-sh">uv venv --python 3.12 --seed # creates .venv environment folder and installs python and pip
+source .venv/bin/activate # activate the environment
+</code></pre>
+<p>Now that you have python and pin ready, install the project code and its dependencies:</p>
+<pre><code class="language-sh"># install package
+pip install .
+
+# install git-annex (required to download data from Lebel et al. 2011)
+
+</code></pre>
+<h4 id="3-install-git-annex-and-datalad-required-to-download-data-from-lebel-et-al-2023">3. Install <a href="https://handbook.datalad.org/en/latest/intro/installation.html">git-annex and datalad</a> (required to download data from Lebel et al. 2023)</h4>
+<h4 id="4-download-the-subject-specific-cortical-surface-data">4. Download the subject-specific cortical surface data</h4>
+<p>You can use our wrapper script that downloads the data from <a href="https://github.com/OpenNeuroDatasets/ds003020.git">the original fMRI data repository</a> with Datalad:</p>
+<pre><code class="language-sh"># Only download data required for plotting results
+python src/encoders/download_data.py --figures [--data_dir DATA_DIR]
+</code></pre>
+<p>Without <code>--data_dir DATA_DIR</code> the data will be downloaded into the folder <code>ds003020</code> of the project directory.
+To download the data into a custom dir, specify <code>--data_dir DATA_DIR</code> (it is recommended to call the last folder <code>ds003020</code> as that is the default dataset name).</p>
+<h4 id="5-setupcheck-configyaml">5. Setup/check <code>config.yaml</code>.</h4>
+<p>The <code>config.yaml</code> should be created automatically when you run the download script in step 4., if you can copy the <a href="https://github.com/GabrielKP/enc/blob/main/config.example.yaml">example config file</a>. Make sure that the <code>DATA_DIR</code> points to the folder where you downloaded the data to in step 4.:</p>
+<pre><code class="language-yaml">CACHE_DIR: .cache
+DATA_DIR: ds003020 # &lt;-- should point to the download location
+RUNS_DIR: runs
+INKSCAPE_PATH: /path/to/inkscape
+INKSCAPE_VERSION: X.Y.Z
+TR_LEN: 2.0
+</code></pre>
+<blockquote>
+<p>[!NOTE]
+If you get the error <code>ImportError: cannot import name 'getargspec' from 'inspect'</code> then try to update your datalad version <code>python -m pip install datalad --upgrade</code></p>
+</blockquote>
+<h4 id="6-download-the-pre-computed-experiment-results-model-performance-scores">6. Download the pre-computed experiment results (model performance scores)</h4>
+<p>Download <a href="https://osf.io/download/g9cy3"><code>runs.zip</code></a> and unzip it such that you have a <code>runs</code> directory which contains the results of individual experiments in separate subfolders:</p>
+<pre><code>runs/extension_ridgeCV
+runs/replication_ridge_huth
+runs/replication_ridgeCV
+runs/reproduction
+</code></pre>
+<blockquote>
+<p>[!NOTE]
+The <code>runs</code> folder should be placed in the project root (i.e. at the same level as <code>data</code>, <code>src</code> etc.)</p>
+</blockquote>
+<h4 id="7-install-inkscape-required-for-plotting">7. Install <a href="https://inkscape.org/">inkscape</a> (required for plotting):</h4>
+<p>Open the <code>config.yaml</code> and set the following values accordingly.</p>
+<pre><code class="language-yaml">INKSCAPE_PATH: path/to/inkscape/binary
+INKSCAPE_VERSION: X.Y.Z
+</code></pre>
+<p>For mac, you usually can <a href="https://stackoverflow.com/a/22085247">find inkscape as described here</a>.</p>
+<h4 id="8-configure-pycortex-required-for-plotting">8. Configure pycortex (required for plotting):</h4>
+<p><strong>Using the provided script</strong></p>
+<p>You can use the script in the repository to configure the pycortex:</p>
+<pre><code class="language-sh">python src/encoders/update_pycortex_config.py
+</code></pre>
+<p><strong>Configure manually</strong></p>
+<p>Find the location of your pycortext config with the python terminal.
+Type <code>python</code> in the command line with the virtual environment activated.
+Then execute following commands:</p>
+<pre><code class="language-py">import cortex
+cortex.options.usercfg
+</code></pre>
+<p>This should give you a path to the config file, copy it and exit the terminal.</p>
+<pre><code class="language-sh"># open the file with an editor of choice (e.g. vim)
+vim path/to/options.cfg
+</code></pre>
+<p>Modify the entry at <code>filestore</code> to <code>DATA_DIR/derivative/pycortex-db</code>.
+Whereas <code>DATA_DIR</code> is the directory of the Lebel et al. data repository.
+E.g. if you did not specify a custom datadir, <code>DATA_DIR</code> then it is <code>/path/to/this/repository/ds003020</code>.</p>
+<h4 id="9-run-the-script-that-plots-the-data">9. Run the script that plots the data:</h4>
+<p>You can now run the plotting script. From the project root folder call:</p>
+<pre><code class="language-sh"># will create plots for all figures
+python src/encoders/plot.py
+</code></pre>
+<p>The script creates a <code>plots</code> folder in the project root folder with three subfolders, one for each published figure:</p>
+<pre><code class="language-sh">./plots
+├── figure1
+│   ├── colorbar.pdf
+│   ├── colorbar.png
+│   ├── colorbar.svg
+│   ├── replication_ridgeCV_semantic_performance.pdf
+│   ├── replication_ridgeCV_semantic_performance.png
+│   ├── replication_ridgeCV_semantic_performance.svg
+│   ├── reproduction_semantic_performance.pdf
+│   ├── reproduction_semantic_performance.png
+│   ├── reproduction_semantic_performance.svg
+│   ├── training_curve_replication_ridgeCV.pdf
+│   ├── training_curve_replication_ridgeCV.png
+│   ├── training_curve_replication_ridgeCV.svg
+│   ├── training_curve_reproduction.pdf
+│   ├── training_curve_reproduction.png
+│   └── training_curve_reproduction.svg
+├── figure2
+│   ├── training_curve_ridge_huth.pdf
+│   ├── training_curve_ridge_huth.png
+│   ├── training_curve_ridge_huth.svg
+│   ├── training_curve_ridgeCV.pdf
+│   ├── training_curve_ridgeCV.png
+│   └── training_curve_ridgeCV.svg
+└── figure3
+    ├── colorbar.pdf
+    ├── colorbar.png
+    ├── colorbar.svg
+    ├── semantic_performance_extension_ridgeCV.pdf
+    ├── semantic_performance_extension_ridgeCV.png
+    ├── semantic_performance_extension_ridgeCV.svg
+    ├── training_curve_extension_ridgeCV.pdf
+    ├── training_curve_extension_ridgeCV.png
+    └── training_curve_extension_ridgeCV.svg
+</code></pre>
+<h2 id="reproduce-correlation-results">Reproduce correlation results</h2>
+<ol>
+<li>
+<p>Follow step 1. and 2. from above.</p>
+</li>
+<li>
+<p>Download data</p>
+</li>
+</ol>
+<pre><code class="language-sh"># all stories for the 3 subjects in our analysis
+python src/encoders/download_data.py --stories all --subjects UTS01 UTS02 UTS03
+</code></pre>
+<ol>
+<li>Run test regression</li>
+</ol>
+<pre><code class="language-sh">python src/encoders/run_all.py\
+  --cross_validation simple\
+  --subject UTS02\
+  --feature eng1000\
+  --n_train_stories 2\
+  --n_repeats 3\
+  --ridge_implementation ridgeCV\
+  --run_folder_name example
+</code></pre>
+<ol>
+<li>Run regressions reproducing our results</li>
+</ol>
+<pre><code class="language-sh"># Reproduction
+python -m lebel_encoding.run_all_replication \
+--subject UTS01 UTS02 UTS03 \
+--feature eng1000 \
+--test_story wheretheressmoke \
+--n_train_stories 1 2 3 5 7 9 11 13 15 17 19 21 23 25 \
+--n_repeats 15 \
+--trim 5 \
+--ndelays 4 \
+--nboots 20 \
+--chunklen 10 \
+--nchunks 10 \
+--use_corr \
+--run_folder_name reproduction
+
+
+# Replication ridgeCV
+python -m encoders.run_all \
+--subject UTS01 UTS02 UTS03 \
+--feature eng1000 \
+--ndelays 4 \
+--interpolation 'lanczos' \
+--ridge_implementation 'ridgeCV' \
+--n_train_stories 1 2 3 5 7 9 11 13 15 17 19 21 23 25 \
+--test_story 'wheretheressmoke' \
+--cross_validation 'simple' \
+--n_repeats 15 \
+--no_keep_train_stories_in_mem \
+--run_folder_name replication_ridgeCV
+
+
+# Replication ridge_huth
+python -m encoders.run_all \
+--subject UTS01 UTS02 UTS03 \
+--feature eng1000 \
+--n_train_stories 1 2 3 5 7 9 11 13 15 17 19 21 23 25  \
+--test_story wheretheressmoke \
+--cross_validation 'simple' \
+--interpolation 'lanczos' \
+--ridge_implementation 'ridge_huth' \
+--n_repeats 15 \
+--ndelays 4 \
+--nboots 20 \
+--chunklen 10 \
+--nchunks 10 \
+--use_corr \
+--no_keep_train_stories_in_mem \
+--run_folder_name replication_ridge_huth
+
+
+# Extension
+python -m encoders.run_all \
+--subject UTS01 UTS02 UTS03 \
+--feature 'envelope' \
+--do_shuffle \
+--ndelays 4 \
+--interpolation 'lanczos' \
+--ridge_implementation 'ridgeCV' \
+--n_train_stories 1 2 3 5 7 9 11 13 15 17 19 21 23 25 \
+--test_story 'wheretheressmoke' \
+--cross_validation 'simple' \
+--n_repeats 15 \
+--no_keep_train_stories_in_mem \
+--run_folder_name extension_ridgeCV
+</code></pre>
+<p><strong>It is likely you will need to run the analyses on a HPC system due to RAM requirements.</strong></p>
+<p>For examples how we deployed the scripts on a cluster, see the <a href="hpc">hpc</a> folder.</p>
+<h2 id="development-setup">Development setup</h2>
+<ol>
+<li><a href="https://python-poetry.org/docs/#installation">Install poetry</a></li>
+<li>Tested for <code>poetry==2.1.2</code></li>
+<li>Run following commands:</li>
+</ol>
+<pre><code class="language-sh"># setup up conda environment (optional)
+conda create -n enc python=3.12
+conda activate enc
+
+# install dependencies
+poetry install
+
+# install pre-commit
+pre-commit install
+
+# download some data for testing
+python src/encoders/download_data.py # subject 2 &amp; few stories
+
+# Setup the config with the editor of your choice
+nano config.yaml
+</code></pre>
+<h2 id="team">Team</h2>
+<ul>
+<li><a href="https://gabrielkp.com/">Gabriel Kressing Palacios</a></li>
+<li>Gio Li</li>
+<li><a href="https://www.kristijanarmeni.net/">Kristijan Armeni</a></li>
+</ul>
+<h2 id="license">License</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tracking", "navigation.tabs", "navigation.path", "navigation.sections", "content.code.copy"], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>
