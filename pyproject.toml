@@ -48,3 +48,10 @@ line-length = 88
 [tool.ruff.lint]
 extend-select = ["I", "E501"]
 ignore = ["F401"]
+
+[tool.codespell]
+# Ref: https://github.com/codespell-project/codespell#using-a-config-file
+skip = '.git,.gitignore,.gitattributes,*.lock'
+check-hidden = true
+# ignore-regex = ''
+# ignore-words-list = ''
