@@ -6,5 +6,6 @@ __pycache__
 data
 runs
 node_modules
+.npm
 .ruff_cache
 plots
