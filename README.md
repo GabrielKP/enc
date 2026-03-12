@@ -1,6 +1,6 @@
 <h1 align="center">Encoding Models</h1>
 
-<p align="center">A project reproducing & replicating endocing models published by <a href="https://github.com/HuthLab/deep-fMRI-dataset"><i>LeBel et al. 2023</i></a>.</p>
+<p align="center">A project reproducing & replicating encoding models published by <a href="https://github.com/HuthLab/deep-fMRI-dataset"><i>LeBel et al. 2023</i></a>.</p>
 <p align="center">We documented our results in this <a href="https://kristijanarmeni.github.io/encoders_report/"><i>Report</i></a>.</p>
 
 <p align="center">
