@@ -51,7 +51,8 @@ ignore = ["F401"]
 
 [tool.codespell]
 # Ref: https://github.com/codespell-project/codespell#using-a-config-file
-skip = '.git,.gitignore,.gitattributes,*.lock'
+skip = '.git,.gitignore,.gitattributes,*.lock,.npm,.cache'
 check-hidden = true
 # ignore-regex = ''
-# ignore-words-list = ''
+# nd - variable for number of dimensions (for nd in ndimlist)
+ignore-words-list = 'nd'
