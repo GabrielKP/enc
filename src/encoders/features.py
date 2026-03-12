@@ -84,7 +84,7 @@ def load_envelope_data(
 
     # if .wav array has two channel, take the mean
     if len(wav_data.shape) == 2:
-        log.info("Wav has 2 channels, averaging across chanel dimension.")
+        log.info("Wav has 2 channels, averaging across channel dimension.")
         wav_data = np.mean(wav_data, axis=1)
 
     X_envelope = get_envelope(wav_data)
@@ -183,7 +183,7 @@ def load_sm1000_data(
             # no word in tr
             X_data[idx_tr] = 0
         else:
-            # average words occuring in tr
+            # average words occurring in tr
             X_data[idx_tr] = np.mean(data[idx_start:idx_end], axis=0)
 
     return X_data

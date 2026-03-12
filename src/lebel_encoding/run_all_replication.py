@@ -15,7 +15,7 @@ from lebel_encoding.encoding_utils import apply_zscore_and_hrf, get_response
 from lebel_encoding.feature_spaces import _FEATURE_CONFIG, get_feature_space
 from lebel_encoding.ridge_utils.ridge import bootstrap_ridge
 
-# mofidied from encoding.py to match same parameters as encorders/run_all.py
+# mofidied from encoding.py to match same parameters as encoders/run_all.py
 # https://github.com/HuthLab/deep-fMRI-dataset/blob/master/encoding/encoding.py
 
 cfg = load_config()
@@ -78,7 +78,7 @@ def run_all_replication(
         Trimming of the features to match preprocessed fmri data.
     ndelays : int, default=5
         By how many TR's features are delayed to model the HRF. For `ndelays=5`, the
-         features of the predictor are shifted by one TR and concatinated to themselves
+         features of the predictor are shifted by one TR and concatenated to themselves
          for five times.
     nboots : int
         The number of bootstrap samples to run. 15 to 30 works well.
@@ -109,7 +109,7 @@ def run_all_replication(
         very little variance while still leading to high correlations, as correlation
         is scale-free while R**2 is not.
     run_folder_name: str, optional
-        The name of the folder in the runs directory (as specificed in
+        The name of the folder in the runs directory (as specified in
         `encoders.utils.load_config()['RUNS_DIR']`) to save the results in.
         If it doesn't exist, it is created on the fly.
     """

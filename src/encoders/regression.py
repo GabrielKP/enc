@@ -558,7 +558,7 @@ def crossval_simple(
     ndelays: int, default=4
         How many delays are used to model the HRF, which is modeled by adding
         a shifted set of duplicated features for each delay. `ndelays=5` implies
-        that the the features of the stimulus are shifted concatinated 5 times
+        that the the features of the stimulus are shifted concatenated 5 times
         to training/testing data.
     interpolation : {"lanczos", "average"}
         Whether to use lanczos interpolation or just average the words within a TR.

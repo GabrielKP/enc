@@ -89,7 +89,7 @@ def run_all(
         The story to use as the test set. If `None`, it will be sampled randomly.
     ndelays : int, default=5
         By how many TR's features are delayed to model the HRF. For `ndelays=5`, the
-         features of the predictor are shifted by one TR and concatinated to themselves
+         features of the predictor are shifted by one TR and concatenated to themselves
          for five times.
     interpolation : {"lanczos", "average"}, default="lanczos"
         Whether to use lanczos interpolation or just average the words within a TR.
@@ -150,7 +150,7 @@ def run_all(
         is scale-free while R**2 is not.
         Only active for ridge_huth="ridge_huth".
     run_folder_name: str, optional
-        The name of the folder in the runs directory (as specificed in
+        The name of the folder in the runs directory (as specified in
         `encoders.utils.load_config()['RUNS_DIR']`) to save the results in.
         If it doesn't exist, it is created on the fly.
     """
@@ -193,7 +193,7 @@ def run_all(
     if "all" in features:
         features = ["envelope", "eng1000"]
 
-    # toggle the shuffle swithch
+    # toggle the shuffle switch
     shuffle_opts = [False]
     if do_shuffle:
         shuffle_opts = [False, True]
@@ -244,12 +244,12 @@ def run_all(
         json.dump(config, f_out, indent=4)
     log.info(f"Written parameters to {params_path}")
 
-    # aggregate overall max correlations and continously update in json
+    # aggregate overall max correlations and continuously update in json
     results_max_agg = defaultdict(partial(defaultdict, partial(defaultdict, dict)))
     # enables instantiating hierarchy of dicts without manually creating them at each
     # level.
 
-    # get a list of 3-element tuples, with all posible combinations
+    # get a list of 3-element tuples, with all possible combinations
     combinations = list(product(features, subjects, shuffle_opts))
 
     results_max_path = os.path.join(run_folder, "results_max.json")

@@ -105,7 +105,7 @@ def parse_textgrid(text_grid_lines: list) -> dict:
         # check if it is a long or short TextGrid format
         is_long = "xmin = " in lines[3]  # xmin = 0.3 (long), just float is short
 
-        # find mathc using re.match
+        # find match using re.match
         start = float(lines[3].strip("xmin = ").strip())
         stop = float(lines[4].strip("xmax = ").strip())
 
