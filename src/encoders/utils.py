@@ -66,7 +66,7 @@ def check_make_dirs(
     verbose: bool, default=True
         Whether to log the output path
     isdir: bool, default=False
-        Treats given path(s) as diretory instead of only checking the basedir.
+        Treats given path(s) as directory instead of only checking the basedir.
     """
 
     if not isinstance(paths, list):

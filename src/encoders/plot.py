@@ -149,7 +149,7 @@ def resolve_parameters(
     n_train_stories: Optional[Union[int, list[int]]] = None,
     shuffles: Optional[Union[str, list[str]]] = None,
 ) -> tuple[list[str], list[str], list[int], list[str]]:
-    """Takes any of subject/featres/n_train_stories/shuffles and returns parameters
+    """Takes any of subject/features/n_train_stories/shuffles and returns parameters
     that are not specified in run_folder_name.
 
     Parameters
@@ -230,7 +230,7 @@ def load_data_wrapper(
 ]:
     """Load data for given configuration and return it in nested dicts.
 
-    Will try to find arameters set to `None` by iterating over subfolders
+    Will try to find parameters set to `None` by iterating over subfolders
     in the `run_folder_name` directory.
 
     Parameters
@@ -263,7 +263,7 @@ def load_data_wrapper(
         run_folder_name, subjects, features, n_train_stories, shuffles
     )
 
-    # get a list of 4-element tuples, with all posible combinations
+    # get a list of 4-element tuples, with all possible combinations
     combinations = list(product(subjects, features, n_train_stories, shuffles))
 
     # default_dict & partial enables instantiating hierarchy of dicts without
@@ -319,7 +319,7 @@ def load_data_wrapper_df(
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Load data for given configuration and return it in a dataframe.
 
-    Will try to find arameters set to `None` by iterating over subfolders
+    Will try to find parameters set to `None` by iterating over subfolders
     in the `run_folder_name` directory.
 
     Parameters
@@ -354,7 +354,7 @@ def load_data_wrapper_df(
         run_folder_name, subjects, features, n_train_stories, shuffles
     )
 
-    # get a list of 4-element tuples, with all posible combinations
+    # get a list of 4-element tuples, with all possible combinations
     combinations = list(product(subjects, features, n_train_stories, shuffles))
 
     rho_means_df_ls: list[pd.DataFrame] = list()

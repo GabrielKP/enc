@@ -15,7 +15,7 @@ Each subfolder contains:
 
 1. *.py script used to create *.scripts (SLURM job) and `submit_jobs.sh`
 1. *.script files, which are individual SLURM jobs. Each job runs model fits for one training set size and all predictors.
-1. `submit_jobs.sh` file a bash script submiting all *.script files to SLURM
+1. `submit_jobs.sh` file a bash script submitting all *.script files to SLURM
 
 ### Using *.py scripts
 

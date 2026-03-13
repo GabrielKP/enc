@@ -30,7 +30,7 @@ def sincinterp1D(data, oldtime, newtime, cutoff_mult=1.0, window=1):
     [oldtime] and [data] must have the same length, but [newtime] can have any length.
     
     This function will assume that the time points in [newtime] are evenly spaced and will use
-    that frequency multipled by [cutoff_mult] as the cutoff frequency of the sinc filter.
+    that frequency multiplied by [cutoff_mult] as the cutoff frequency of the sinc filter.
     
     The sinc function will be computed with [window] lobes.  With [window]=1, this will
     effectively compute the Lanczos filter.

@@ -25,7 +25,7 @@ def model_pvalue(wts, stim, resp, nboot=1e4, randinds=None):
     zorig = ztransformccs(origcorr)
     ppval = 1-scipy.stats.norm.cdf(zorig, loc=zccs.mean(), scale=zccs.std())
     
-    print("Boostrap p-value: %0.3f, parametric p-value: %0.03f"%(bspval, ppval))
+    print("Bootstrap p-value: %0.3f, parametric p-value: %0.03f"%(bspval, ppval))
     return bspval, ppval
 
 def make_randinds(nwts, nboot, algo="randint", maxval=None):
